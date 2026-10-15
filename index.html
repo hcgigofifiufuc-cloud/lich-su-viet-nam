@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+
+<html lang="vi">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
+<meta content="DÒNG THỜI GIAN SỐ — Lịch sử Việt Nam từ năm 1945 đến nay. Dự án Lịch sử 12 của lớp 12A9, Trường THPT Kế Sách." name="description"/>
+<meta content="light" name="color-scheme"/>
+<title>DÒNG THỜI GIAN SỐ · Lịch sử Việt Nam 1945 — nay</title>
+<style>
+:root{
+  --bg:#f4efe4;
+  --paper:#fffdf8;
+  --paper-2:#f9f4e9;
+  --ink:#243027;
+  --muted:#687267;
+  --green:#123d2b;
+  --green-2:#1d5940;
+  --red:#a61b18;
+  --red-2:#c62b25;
+  --gold:#c79b42;
+  --gold-soft:#ead9ad;
+  --line:#ddd3bd;
+  --white:#fffdf8;
+  --shadow:0 16px 45px rgba(37,31,20,.10);
+  --shadow-soft:0 8px 24px rgba(37,31,20,.07);
+  --radius:14px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;background:var(--bg)}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Segoe UI","Noto Sans","Arial Unicode MS",Arial,sans-serif;font-size:15px;line-height:1.65;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;overflow-x:hidden}
+button,a,input{font:inherit}
+a{text-decoration:none;color:inherit}
+button{appearance:none}
+.wrap{width:min(1180px,100%);margin-inline:auto;padding-inline:28px}
+.serif,h1,h2,h3,h4,h5,.brand strong,.point b,.stage-top b,.event-card .year,.footer-title{font-family:Georgia,"Cambria","Times New Roman",serif}
+.topstrip{background:var(--green);color:#efe3c4;font-size:11px;letter-spacing:.06em;border-bottom:1px solid rgba(255,255,255,.08)}
+.topstrip .wrap{min-height:34px;display:flex;align-items:center;justify-content:space-between;gap:18px}
+.topstrip b{color:#f0ca63}
+.top{position:sticky;top:0;z-index:50;background:rgba(255,253,248,.96);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--line);box-shadow:0 4px 20px rgba(31,28,20,.04)}
+.nav{min-height:76px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+.brand{display:flex;align-items:center;gap:12px;min-width:0}
+.brand-mark{width:43px;height:43px;flex:0 0 43px;background:var(--red);display:grid;place-items:center;color:#f2cc67;font-size:21px;border-radius:4px;box-shadow:4px 4px 0 rgba(166,27,24,.12)}
+.brand small{display:block;font-size:9px;color:#7e2a25;letter-spacing:.11em;white-space:nowrap}
+.brand strong{display:block;font-size:16px;letter-spacing:.015em;color:var(--red);line-height:1.2}
+.links{display:flex;align-items:stretch;gap:24px}
+.links a{position:relative;padding:28px 0 23px;font-size:11px;text-transform:uppercase;letter-spacing:.065em;color:#4f584f;cursor:pointer;white-space:nowrap}
+.links a::after{content:"";position:absolute;left:0;right:100%;bottom:17px;height:2px;background:var(--red);transition:right .2s ease}
+.links a:hover,.links a.active{color:var(--red)}
+.links a:hover::after,.links a.active::after{right:0}
+.menu{display:none;border:1px solid var(--line);background:var(--paper);color:var(--green);border-radius:8px;width:42px;height:42px;cursor:pointer}
+
+.hero{position:relative;padding:74px 0 62px;background:linear-gradient(180deg,#fbf6e9 0%,#f4efe4 100%);border-bottom:1px solid #e5dcc8}
+.hero::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(18,61,43,.035) 1px,transparent 1px),linear-gradient(rgba(18,61,43,.035) 1px,transparent 1px);background-size:42px 42px;mask-image:linear-gradient(to bottom,rgba(0,0,0,.45),transparent 80%);pointer-events:none}
+.hero-grid{position:relative;display:grid;grid-template-columns:1.03fr .97fr;gap:42px;align-items:center}
+.eyebrow{font-size:10px;color:var(--red);font-weight:800;letter-spacing:.2em;text-transform:uppercase}
+.hero h1{font-size:clamp(45px,6vw,78px);line-height:.95;color:var(--red);letter-spacing:-.025em;margin:15px 0 12px}
+.hero h2{font-size:clamp(22px,3vw,34px);color:var(--green);line-height:1.16;margin:0 0 20px;letter-spacing:-.015em}
+.hero p{max-width:650px;color:#59645b;font-size:15px}
+.rule{height:2px;width:140px;background:linear-gradient(90deg,var(--red),var(--gold));margin:25px 0}
+.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}
+.btn{border:1px solid var(--red);border-radius:7px;padding:11px 16px;font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.04em;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:7px;transition:transform .18s ease,box-shadow .18s ease,background .18s ease}
+.btn:hover{transform:translateY(-1px);box-shadow:0 8px 18px rgba(50,30,20,.10)}
+.btn.primary{background:var(--red);color:#fff9eb}.btn.primary:hover{background:var(--red-2)}
+.btn.light{background:transparent;color:var(--red)}.btn.light:hover{background:#fff7e7}
+.btn.green{background:var(--green);border-color:var(--green);color:#fff8e8}
+.hero-photo{height:485px;border:8px solid #e9ddc2;border-radius:14px;background:#2b241b;position:relative;overflow:hidden;box-shadow:0 28px 65px rgba(44,31,14,.20)}
+.hero-slide{position:absolute;inset:0;opacity:0;transition:opacity .85s ease;pointer-events:none}
+.hero-slide.active{opacity:1}
+.hero-slide img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:grayscale(.78) sepia(.25) contrast(1.06) brightness(.9);transform:scale(1.01);transition:transform 5.5s ease}
+.hero-slide.active img{transform:scale(1.045)}
+.photo-wash{position:absolute;inset:0;background:linear-gradient(0deg,rgba(11,30,21,.9),rgba(11,30,21,0) 64%)}
+.photo-frame{position:absolute;inset:16px;border:1px solid rgba(255,242,196,.56);pointer-events:none;z-index:3}
+.photo-badge{position:absolute;top:28px;left:28px;background:var(--red);color:#fff3d9;padding:7px 10px;font-size:9px;letter-spacing:.15em;font-weight:800;z-index:4}
+.photo-caption{position:absolute;left:28px;right:28px;bottom:48px;color:#fff4dc;z-index:4}.photo-caption b{display:block;font-size:21px;line-height:1.25}.photo-caption span{font-size:11px;opacity:.92}
+.hero-dots{position:absolute;left:28px;bottom:20px;display:flex;gap:7px;z-index:5}
+.hero-dot{width:7px;height:7px;border:1px solid rgba(255,244,220,.9);border-radius:50%;background:transparent;padding:0;cursor:pointer;transition:all .25s ease}
+.hero-dot.active{width:22px;border-radius:9px;background:#f0ca63;border-color:#f0ca63}
+.hero-photo:hover .hero-slide.active img{transform:scale(1.03)}
+@media (prefers-reduced-motion:reduce){.hero-slide{transition:none}.hero-slide img{transition:none}.hero-slide.active img{transform:none}}
+
+.page{display:none}.page.active{display:block}
+.section{padding:68px 0}.section.alt{background:#faf4e6;border-top:1px solid #e7ddc7;border-bottom:1px solid #e7ddc7}
+.section-head{display:flex;justify-content:space-between;align-items:end;gap:22px;margin-bottom:30px}
+.section-head h3{margin:6px 0 3px;color:var(--red);font-size:33px;line-height:1.15;text-transform:uppercase;letter-spacing:-.01em}
+.section-sub{margin:0;color:var(--muted);font-size:14px}
+.intro-box{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:25px;box-shadow:var(--shadow-soft)}
+.intro-box h4{font-size:21px;color:var(--green);margin:0 0 10px}.intro-box p{margin:7px 0;color:#59635a}
+.pillrow{display:flex;gap:8px;flex-wrap:wrap;margin:16px 0}.pill{display:inline-block;background:#f4ead0;border:1px solid #dec99a;border-radius:30px;padding:5px 10px;font-size:10px;font-weight:800;color:#725621}
+.home-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:17px;margin-top:25px}
+.home-card{position:relative;background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:21px;min-height:220px;box-shadow:var(--shadow-soft);display:flex;flex-direction:column;transition:transform .18s ease,box-shadow .18s ease,border-color .18s ease}
+.home-card::before{content:"";position:absolute;left:0;top:0;width:100%;height:3px;background:linear-gradient(90deg,var(--red),var(--gold));border-radius:var(--radius) var(--radius) 0 0;opacity:.85}
+.home-card:hover{transform:translateY(-3px);box-shadow:var(--shadow);border-color:#cdbf9f}
+.home-icon{font-size:12px;font-weight:900;letter-spacing:.14em;color:var(--red);text-transform:uppercase;margin-bottom:3px}.home-card h4{font-size:20px;color:var(--green);margin:8px 0}.home-card p{font-size:12px;color:#647066;flex:1}.home-card .btn{align-self:flex-start}
+
+.timeline-wrap{position:relative}.timeline-line{height:4px;background:linear-gradient(90deg,var(--red),var(--gold),var(--green));border-radius:20px;margin:31px 40px 16px}.timeline-points{display:grid;grid-template-columns:repeat(6,1fr);gap:10px}.point{text-align:center}.point-dot{width:23px;height:23px;margin:-27px auto 10px;background:#fff8e7;border:4px solid var(--red);border-radius:50%;position:relative;z-index:2;box-shadow:0 0 0 5px rgba(255,255,255,.55)}.point:nth-child(n+4) .point-dot{border-color:var(--green)}.point b{font-size:18px;color:var(--red)}.point small{display:block;color:#756d5e;font-size:10px;margin-top:3px}
+.stage-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:31px}.stage-card{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow-soft);transition:transform .18s ease,box-shadow .18s ease}.stage-card:hover{transform:translateY(-2px);box-shadow:var(--shadow)}
+.stage-card .stage-top{padding:17px 18px;background:var(--green);color:#fff2d2}.stage-card:nth-child(1) .stage-top,.stage-card:nth-child(2) .stage-top{background:var(--red)}.stage-top b{font-size:20px}.stage-top span{display:block;font-size:10px;opacity:.87;margin-top:3px}.stage-body{padding:19px}.stage-body h4{font-size:18px;margin:0 0 8px;color:var(--red)}.stage-body p{font-size:12px;color:#5f695f}.stage-body ul{margin:10px 0;padding-left:18px;font-size:12px;color:#5f695f}.stage-body li{margin:4px 0}.detail-link{display:inline-block;margin-top:7px;color:var(--red);font-size:11px;font-weight:800;cursor:pointer}
+
+.event-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.event-card{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:20px;box-shadow:var(--shadow-soft);position:relative;transition:transform .18s ease,box-shadow .18s ease}.event-card:hover{transform:translateY(-2px);box-shadow:var(--shadow)}.event-card .year{font-size:28px;color:var(--red);line-height:1}.event-card .tag{display:inline-block;margin:8px 0;background:#f3e7c8;color:#725621;border:1px solid #dfcb9b;border-radius:20px;padding:4px 8px;font-size:9px;font-weight:800}.event-card h4{font-size:18px;color:var(--green);margin:4px 0 7px}.event-card p{font-size:12px;color:#606a61;margin:0}.event-card .why{margin-top:12px;padding-top:10px;border-top:1px dashed #d5c7aa;font-size:11px;color:#716957}.source-link{display:inline-block;margin-top:10px;color:#8c2721;font-size:10px;font-weight:800;text-decoration:underline;text-underline-offset:2px}
+
+.museum-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}.museum-card{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow-soft);transition:transform .18s ease,box-shadow .18s ease}.museum-card:hover{transform:translateY(-2px);box-shadow:var(--shadow)}.museum-card img{width:100%;height:245px;object-fit:cover;display:block;filter:sepia(.10) contrast(1.03)}.museum-body{padding:18px}.museum-body .year{font-size:10px;color:var(--red);font-weight:900;letter-spacing:.12em}.museum-body h4{font-size:20px;color:var(--green);margin:5px 0}.museum-body p{font-size:12px;color:#606a61;margin:0}.credit{font-size:10px;color:#817863;margin-top:9px}.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:25px}.stat{background:var(--green);color:#f9eac6;border-radius:10px;padding:18px;text-align:center}.stat b{display:block;font:700 25px Georgia,serif;color:#f2ca55}.stat span{font-size:10px}
+
+.quiz-page{background:linear-gradient(135deg,#6f0d0b,#b01b16);color:#fff5df}.quiz-layout{display:grid;grid-template-columns:1fr .85fr;gap:30px;align-items:start}.quiz-box{background:#fff8e9;color:var(--ink);border-radius:var(--radius);padding:26px;box-shadow:0 22px 50px rgba(50,0,0,.25)}.progress{height:7px;background:#ead8af;border-radius:20px;overflow:hidden;margin:8px 0 18px}.progress span{display:block;height:100%;width:0;background:var(--red);transition:.2s}.quiz-box h4{font-size:23px;color:var(--green);margin:10px 0 15px}.quiz-option{width:100%;text-align:left;padding:12px 13px;background:#fffdf8;border:1px solid #d8c394;border-radius:7px;margin:6px 0;cursor:pointer;font-size:12px;transition:border-color .15s ease,background .15s ease}.quiz-option:hover{border-color:var(--red);background:#fff9ec}.quiz-option.correct{background:#dcebd4;border-color:#5d7d51}.quiz-option.wrong{background:#f0c9c0;border-color:#a94a3d}.quiz-result{min-height:25px;font-weight:800;color:var(--red);margin:12px 0}.quiz-side{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.2);border-radius:var(--radius);padding:23px}.quiz-side h4{font-size:24px;margin:0 0 10px}.quiz-side li{font-size:12px;margin:8px 0}
+
+.about-grid{display:grid;grid-template-columns:1fr 1.2fr;gap:22px}.team-box{background:var(--green);color:#f8e9c6;border-radius:var(--radius);padding:27px;box-shadow:var(--shadow)}.team-box h4{font-size:25px;margin:0 0 10px;color:#f1cc55}.people{display:grid;grid-template-columns:repeat(4,1fr);gap:13px;margin-top:18px}.person{background:var(--paper);border:1px solid var(--line);border-radius:9px;text-align:center;padding:17px}.avatar{width:74px;height:74px;margin:auto;border-radius:50%;background:#eadbb8;display:grid;place-items:center;border:5px solid #f7efd9;color:var(--red);font:700 23px Georgia,serif}.person strong{display:block;margin-top:8px;font:700 15px Georgia,serif;color:var(--green)}.person small{font-size:10px;color:#7b6b50}.info-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:20px}.info-card{background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:20px}.info-card h4{margin:0 0 7px;color:var(--red);font-size:19px}.info-card p,.info-card li{font-size:12px;color:#626c63}.sources-list{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}.sources-list a{font-size:11px;color:#7f2b24;text-decoration:underline;text-underline-offset:2px}
+
+footer{background:#102e22;color:#d9cda9;margin-top:0;border-top:4px solid #c69a40}.footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:30px;padding:42px 0 30px}.footer-title{font-size:19px;color:#f0c85c}.footer-grid p{font-size:11px;line-height:1.75;margin:8px 0}.footer-grid h5{font-family:"Segoe UI","Noto Sans",Arial,sans-serif;font-size:10px;letter-spacing:.14em;color:#f0c85c;margin:0 0 10px}.footer-grid a{font-size:11px;color:#e6ddc8;line-height:2;cursor:pointer}.footer-grid a:hover{color:#fff}.copy{display:flex;justify-content:space-between;gap:20px;border-top:1px solid rgba(255,255,255,.12);padding:13px 0 18px;font-size:10px;color:#bcae8d}
+
+.modal{position:fixed;inset:0;background:rgba(13,22,17,.72);display:none;align-items:center;justify-content:center;padding:22px;z-index:100}.modal.open{display:flex}.modal-box{width:min(820px,100%);max-height:min(88vh,820px);overflow:auto;background:var(--paper);border:1px solid var(--line);border-top:5px solid var(--red);border-radius:var(--radius);padding:34px 36px 30px;box-shadow:0 30px 90px rgba(0,0,0,.30);position:relative}.modal-box h3{color:var(--red);font-size:30px;line-height:1.15;margin:0 42px 8px 0}.modal-kicker{font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:#8b7658;font-weight:800;margin-bottom:18px}.modal-lead{color:#4e5b51!important;font-size:15px!important;line-height:1.8;margin:0 0 20px}.detail-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:18px}.detail-panel{background:#faf5e9;border:1px solid #e5dbc6;border-radius:10px;padding:17px 18px}.detail-panel h4{margin:0 0 9px;color:var(--green);font-size:14px}.detail-panel p{margin:0;color:#59645b;font-size:13px;line-height:1.72}.detail-panel ul{margin:0;padding-left:18px;color:#59645b;font-size:13px;line-height:1.8}.source-note{border-top:1px solid var(--line);margin-top:22px;padding-top:14px;font-size:11px;line-height:1.7;color:#7b715f}.source-note a{color:var(--red);font-weight:800;text-decoration:none}.source-note a:hover{text-decoration:underline}.modal-close{position:absolute;right:15px;top:12px;border:1px solid #dfd3bb;background:#fffaf0;color:var(--green);font-size:23px;cursor:pointer;line-height:1;width:36px;height:36px;border-radius:50%}.modal-close:hover{background:#f4ead7}@media(max-width:760px){.modal{padding:10px}.modal-box{padding:28px 20px 22px;max-height:92vh}.modal-box h3{font-size:24px}.detail-grid{grid-template-columns:1fr}}
+
+
+/* Digital museum gallery */
+.museum-more{margin-top:13px;margin-left:16px;vertical-align:middle;border:1px solid #c9b98f;background:#f7efdf;color:var(--green);border-radius:999px;padding:9px 13px;font:700 10px/1 Segoe UI,Arial,sans-serif;cursor:pointer;transition:transform .2s ease,background .2s ease,border-color .2s ease}.source-link+.museum-more{margin-top:10px}
+.museum-more:hover{transform:translateY(-2px);background:#fff8ea;border-color:#a88948}
+.museum-gallery{display:grid;grid-template-columns:92px 1fr;gap:14px;align-items:start;margin:12px 0 18px}
+.museum-gallery-main{min-width:0}
+.museum-gallery-main img{width:100%;height:390px;object-fit:cover;border-radius:11px;border:1px solid var(--line);display:block;background:#eee6d7;transition:opacity .22s ease,transform .3s ease}
+.museum-gallery-main img.gallery-swap{opacity:.35;transform:scale(.985)}
+.gallery-thumbs{display:flex;flex-direction:column;gap:9px;max-height:390px;overflow:auto;padding-right:3px}
+.gallery-thumb{border:2px solid transparent;background:#f5eddd;border-radius:8px;padding:2px;cursor:pointer;aspect-ratio:1/1;overflow:hidden;transition:transform .18s ease,border-color .18s ease}
+.gallery-thumb img{width:100%;height:100%;object-fit:cover;border-radius:5px;display:block}
+.gallery-thumb:hover{transform:translateX(2px)}
+.gallery-thumb.active{border-color:var(--red);box-shadow:0 0 0 2px rgba(167,28,24,.12)}
+.gallery-caption{display:flex;justify-content:space-between;gap:14px;align-items:start;margin-top:9px;padding:10px 12px;background:#faf5e9;border:1px solid #e5dbc6;border-radius:9px}
+.gallery-caption strong{display:block;color:var(--green);font:700 14px Georgia,serif}
+.gallery-caption span{display:block;color:#756e61;font-size:10px;line-height:1.5;margin-top:3px}
+.gallery-count{white-space:nowrap;color:var(--red);font:800 11px Segoe UI,Arial,sans-serif}
+.gallery-hint{font-size:10px;color:#817863;margin:0 0 12px}
+@media(max-width:760px){.museum-gallery{grid-template-columns:1fr}.gallery-thumbs{order:2;flex-direction:row;max-height:none;overflow-x:auto}.gallery-thumb{min-width:68px;width:68px}.museum-gallery-main img{height:300px}}
+
+button:focus-visible,a:focus-visible{outline:3px solid rgba(198,155,66,.55);outline-offset:3px}
+@media (max-width:1050px){.links{gap:15px}.links a{font-size:10px}.home-grid{grid-template-columns:repeat(2,1fr)}.stage-grid,.event-grid{grid-template-columns:repeat(2,1fr)}.hero-grid{grid-template-columns:1fr}.hero-photo{height:420px}.about-grid{grid-template-columns:1fr}.people{grid-template-columns:repeat(4,1fr)}}
+@media (max-width:780px){.wrap{padding-inline:18px}.topstrip .wrap{font-size:9px}.topstrip .wrap span:last-child{display:none}.nav{min-height:68px}.brand small{font-size:8px}.brand strong{font-size:14px}.brand-mark{width:39px;height:39px;flex-basis:39px}.menu{display:block}.links{display:none;position:absolute;left:12px;right:12px;top:68px;background:rgba(255,253,248,.99);border:1px solid var(--line);border-radius:10px;padding:8px;box-shadow:var(--shadow);flex-direction:column;gap:0}.links.open{display:flex}.links a{padding:12px 12px;border-bottom:0}.links a::after{display:none}.hero{padding:50px 0 45px}.hero h1{font-size:clamp(42px,13vw,62px)}.hero-photo{height:340px}.section{padding:50px 0}.section-head{align-items:start;flex-direction:column}.timeline-points{grid-template-columns:repeat(3,1fr);row-gap:35px}.timeline-line{display:none}.stage-grid,.event-grid,.museum-grid,.info-grid{grid-template-columns:1fr}.stats{grid-template-columns:repeat(2,1fr)}.quiz-layout{grid-template-columns:1fr}.people{grid-template-columns:repeat(2,1fr)}.footer-grid{grid-template-columns:1fr 1fr;gap:24px}.copy{flex-direction:column;gap:4px}}
+@media (max-width:480px){.home-grid{grid-template-columns:1fr}.people{grid-template-columns:1fr 1fr}.timeline-points{grid-template-columns:repeat(2,1fr)}.hero-photo{height:300px}.photo-caption b{font-size:18px}.footer-grid{grid-template-columns:1fr}.sources-list{grid-template-columns:1fr}.btn{width:100%}.actions{display:grid}.section-head .btn{width:auto}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{transition:none!important;animation:none!important}}
+
+/* HERO CAROUSEL — interactive museum-style motion */
+.hero-photo{perspective:1100px;transform-style:preserve-3d;transition:transform .35s ease,box-shadow .35s ease}
+.hero-photo.is-hovering{box-shadow:0 34px 80px rgba(44,31,14,.28)}
+.hero-slide{transition:opacity .8s ease,transform .8s cubic-bezier(.2,.8,.2,1);transform:scale(1.025)}
+.hero-slide.active{transform:scale(1)}
+.hero-slide img{will-change:transform,filter;transition:transform 6.5s cubic-bezier(.2,.7,.2,1),filter .8s ease}
+.hero-slide.active img{transform:scale(1.085)}
+.hero-slide.active .photo-badge{animation:badgeIn .65s both .08s}
+.hero-slide.active .photo-caption{animation:captionIn .75s both .12s}
+.photo-wash{transition:opacity .5s ease}
+.hero-photo:hover .photo-wash{opacity:.82}
+.hero-vignette{position:absolute;inset:0;z-index:2;pointer-events:none;background:radial-gradient(circle at 50% 45%,transparent 40%,rgba(5,18,12,.28) 100%)}
+.hero-controls{position:absolute;right:25px;bottom:20px;display:flex;gap:7px;z-index:8}
+.hero-arrow{width:34px;height:34px;border:1px solid rgba(255,244,220,.55);border-radius:50%;background:rgba(8,28,20,.42);backdrop-filter:blur(8px);color:#fff6df;font-size:25px;line-height:28px;padding:0;cursor:pointer;transition:transform .2s ease,background .2s ease,border-color .2s ease}
+.hero-arrow:hover{transform:translateY(-2px) scale(1.05);background:rgba(166,30,27,.92);border-color:#f0ca63}
+.hero-progress{position:absolute;left:0;right:0;bottom:0;height:3px;background:rgba(255,244,220,.18);z-index:8;overflow:hidden}
+.hero-progress span{display:block;height:100%;width:0;background:linear-gradient(90deg,#f0ca63,#fff0bc);box-shadow:0 0 10px rgba(240,202,99,.65)}
+.hero-meta{position:absolute;left:28px;right:28px;bottom:20px;z-index:7;display:flex;align-items:center;gap:15px;pointer-events:none}
+.hero-counter{font-size:10px;letter-spacing:.12em;color:#fff1ce;background:rgba(8,28,20,.45);border:1px solid rgba(255,244,220,.24);padding:6px 9px;border-radius:20px;backdrop-filter:blur(7px)}
+.hero-counter b{color:#f0ca63;font-size:12px}.hero-hint{font-size:9px;color:rgba(255,244,220,.82);letter-spacing:.08em;text-transform:uppercase}
+.hero-dots{left:50%;bottom:20px;transform:translateX(-50%);gap:8px}
+.hero-dot{width:8px;height:8px}.hero-dot.active{width:28px;box-shadow:0 0 12px rgba(240,202,99,.38)}
+@keyframes captionIn{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+@keyframes badgeIn{from{opacity:0;transform:translateY(-10px)}to{opacity:1;transform:none}}
+@media(max-width:780px){.hero-meta{left:18px;bottom:17px}.hero-hint{display:none}.hero-controls{right:18px;bottom:17px}.hero-dots{bottom:64px}.hero-progress{height:2px}}
+@media(prefers-reduced-motion:reduce){.hero-photo,.hero-slide,.hero-slide img{transition:none!important}.hero-slide.active .photo-badge,.hero-slide.active .photo-caption{animation:none!important}.hero-progress span{transition:none!important}}
+
+
+/* === INTERACTIVE PRO LAYER === */
+.home-card,.stage-card,.event-card,.museum-card,.info-card,.person,.stat{will-change:transform;transform-style:preserve-3d}
+.home-card::after,.stage-card::after,.event-card::after,.museum-card::after{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;background:radial-gradient(circle at var(--mx,50%) var(--my,50%),rgba(255,255,255,.30),transparent 32%);opacity:0;transition:opacity .25s ease}
+.home-card,.stage-card,.event-card,.museum-card{position:relative;overflow:hidden}
+.interactive-glow{opacity:1!important}
+.card-reveal{opacity:0;transform:translateY(24px);transition:opacity .65s ease,transform .65s cubic-bezier(.2,.8,.2,1)}
+.card-reveal.revealed{opacity:1;transform:none}
+.event-card,.museum-card{cursor:pointer}
+.event-card::before,.museum-card::before{content:"";position:absolute;z-index:2;top:12px;right:12px;width:30px;height:30px;border-radius:50%;background:rgba(255,253,248,.9);border:1px solid var(--line);opacity:0;transform:translateY(-5px) scale(.9);transition:.25s ease;box-shadow:0 5px 15px rgba(40,30,15,.10)}
+.event-card::before{content:"↗";display:grid;place-items:center;color:var(--red);font-size:15px;font-weight:900}
+.museum-card::before{content:"⌕";display:grid;place-items:center;color:var(--green);font-size:17px;font-weight:900}
+.event-card:hover::before,.museum-card:hover::before{opacity:1;transform:none}
+.event-card:hover,.museum-card:hover{transform:translateY(-7px) scale(1.012);box-shadow:0 22px 45px rgba(37,31,20,.14);border-color:#c9b88f}
+.museum-card img{transition:transform .7s cubic-bezier(.2,.8,.2,1),filter .4s ease}.museum-card:hover img{transform:scale(1.055);filter:sepia(.08) contrast(1.08) brightness(.96)}
+.stage-card:hover .stage-top{letter-spacing:.01em}.stage-card .stage-top{transition:padding .25s ease,background .25s ease}.stage-card:hover .stage-top{padding-left:23px}
+.stage-card.active-card{outline:3px solid rgba(199,155,66,.42);box-shadow:0 0 0 7px rgba(199,155,66,.10),0 24px 55px rgba(37,31,20,.15);animation:cardPulse 1.1s ease}
+@keyframes cardPulse{0%,100%{transform:translateY(-3px)}50%{transform:translateY(-6px)}}
+.timeline-points .point{cursor:pointer;padding:7px 5px;border-radius:10px;transition:background .2s ease,transform .2s ease}.timeline-points .point:hover{background:#fff9eb;transform:translateY(-3px)}.timeline-points .point:focus-visible{outline:2px solid var(--red);outline-offset:3px}
+.point-dot{transition:transform .25s ease,box-shadow .25s ease}.point:hover .point-dot{transform:scale(1.18);box-shadow:0 0 0 8px rgba(199,155,66,.15)}
+.stat{position:relative;overflow:hidden;transition:transform .25s ease,box-shadow .25s ease}.stat:hover{transform:translateY(-5px);box-shadow:0 18px 35px rgba(18,61,43,.22)}.stat::after{content:"";position:absolute;left:-40%;top:0;width:25%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.22),transparent);transform:skewX(-18deg);transition:left .8s ease}.stat:hover::after{left:120%}
+.person{cursor:pointer;transition:transform .25s ease,box-shadow .25s ease}.person:hover{transform:translateY(-6px) rotateX(2deg);box-shadow:0 16px 30px rgba(37,31,20,.12)}.avatar{transition:transform .35s ease,box-shadow .35s ease}.person:hover .avatar{transform:scale(1.08) rotate(-4deg);box-shadow:0 8px 18px rgba(166,27,24,.14)}
+.info-card{transition:transform .22s ease,box-shadow .22s ease,border-color .22s ease}.info-card:hover{transform:translateY(-4px);box-shadow:var(--shadow);border-color:#cdbf9f}
+.ripple{position:absolute;border-radius:50%;pointer-events:none;background:rgba(255,255,255,.42);transform:scale(0);animation:ripple .55s ease-out}.ripple.dark{background:rgba(166,27,24,.16)}
+@keyframes ripple{to{transform:scale(4);opacity:0}}
+.modal-box{animation:modalIn .3s cubic-bezier(.2,.8,.2,1)}
+@keyframes modalIn{from{opacity:0;transform:translateY(18px) scale(.97)}to{opacity:1;transform:none}}
+.detail-panel,.source-note{animation:contentIn .45s ease both}.detail-panel:nth-child(2){animation-delay:.06s}.source-note{animation-delay:.12s}@keyframes contentIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+@media (hover:none){.event-card::before,.museum-card::before{opacity:.85;transform:none}.home-card::after,.stage-card::after,.event-card::after,.museum-card::after{display:none}}
+@media (prefers-reduced-motion:reduce){.card-reveal{opacity:1;transform:none;transition:none}.event-card:hover,.museum-card:hover,.person:hover,.info-card:hover,.stat:hover{transform:none}.museum-card img{transition:none}.ripple{display:none}.modal-box{animation:none}}
+
+
+/* GOOGLE SITES / FULL-PAGE POLISH — responsive inside an embedded iframe */
+.wrap{width:min(1280px,100%);padding-inline:32px}
+.nav{min-height:72px}
+.links{gap:20px}
+.links a{padding-top:26px;padding-bottom:21px}
+.hero{padding:58px 0 54px}
+.hero-grid{grid-template-columns:minmax(0,1fr) minmax(460px,.95fr);gap:34px}
+.hero h1{font-size:clamp(46px,5.2vw,72px);max-width:760px}
+.hero h2{max-width:720px}
+.hero-photo{height:540px}
+.section{padding:60px 0}
+.section-head{margin-bottom:26px}
+.home-grid{gap:18px}
+.stage-grid,.event-grid{gap:20px}
+.museum-grid{gap:22px}
+.museum-card img{height:270px}
+.museum-body{padding:20px}
+.source-link{margin-right:8px}
+.museum-more{margin-left:0!important;margin-top:12px!important;display:inline-flex}
+.actions{gap:12px}
+
+/* Keep the embedded site clean on medium Google Sites columns. */
+@media(max-width:1050px){
+  .wrap{padding-inline:26px}
+  .hero-grid{grid-template-columns:1fr .92fr;gap:26px}
+  .hero-photo{height:500px}
+  .links{gap:14px}
+  .links a{font-size:10px}
+}
+@media(max-width:780px){
+  .wrap{padding-inline:18px}
+  .hero{padding:46px 0 42px}
+  .hero-grid{grid-template-columns:1fr;gap:28px}
+  .hero h1{font-size:clamp(42px,12vw,62px)}
+  .hero-photo{height:390px}
+  .section{padding:52px 0}
+  .museum-card img{height:230px}
+  .source-link{margin-right:6px}
+  .museum-more{margin-top:10px!important}
+}
+@media(max-width:480px){
+  .hero-photo{height:315px}
+  .museum-card img{height:205px}
+  .museum-body{padding:16px}
+  .source-link,.museum-more{font-size:10px}
+}
+
+
+/* === GOOGLE SITES PROFESSIONAL EDGE-TO-EDGE MODE === */
+html,body{margin:0;padding:0;width:100%;min-height:100%;overflow-x:hidden}
+body{background:#f4efe4}
+#dts-gsite{width:100%;min-height:100vh;background:#f4efe4}
+#dts-gsite .wrap{width:100%;max-width:none;margin:0;padding-left:clamp(18px,3.2vw,58px);padding-right:clamp(18px,3.2vw,58px);box-sizing:border-box}
+#dts-gsite .topstrip .wrap{padding-top:0;padding-bottom:0}
+#dts-gsite .top{position:relative;z-index:20}
+#dts-gsite .nav{width:100%;min-height:76px}
+#dts-gsite .hero{min-height:calc(100vh - 110px);box-sizing:border-box;display:flex;align-items:center;padding:clamp(44px,6vh,82px) 0}
+#dts-gsite .hero-grid{width:100%;min-height:min(760px,calc(100vh - 180px));align-items:center;grid-template-columns:minmax(0,1fr) minmax(420px,.95fr);gap:clamp(28px,5vw,82px)}
+#dts-gsite .hero-copy{max-width:900px}
+#dts-gsite .hero h1{font-size:clamp(52px,7vw,104px);line-height:.9;max-width:900px}
+#dts-gsite .hero h2{font-size:clamp(25px,3.2vw,43px);max-width:820px}
+#dts-gsite .hero p{max-width:760px;font-size:clamp(14px,1.15vw,17px)}
+#dts-gsite .hero-photo{height:min(72vh,720px);min-height:470px;border-width:9px;border-radius:18px}
+#dts-gsite .section{min-height:55vh;box-sizing:border-box;padding:clamp(64px,7vh,100px) 0}
+#dts-gsite .section > .wrap{width:100%}
+#dts-gsite .section-head h3{font-size:clamp(30px,3vw,44px)}
+#dts-gsite .home-grid{gap:clamp(18px,2vw,30px)}
+#dts-gsite .stage-grid,#dts-gsite .event-grid{gap:clamp(18px,2vw,30px)}
+#dts-gsite .museum-grid{gap:clamp(20px,2.5vw,34px)}
+#dts-gsite .museum-card img{height:clamp(260px,27vw,390px)}
+#dts-gsite .quiz-page{min-height:100vh;box-sizing:border-box;display:flex;align-items:center}
+#dts-gsite .quiz-page > .wrap{width:100%}
+#dts-gsite footer{width:100%}
+@media(max-width:1050px){
+  #dts-gsite .hero{min-height:auto}
+  #dts-gsite .hero-grid{grid-template-columns:1fr;min-height:0}
+  #dts-gsite .hero-photo{height:min(68vw,620px);min-height:390px}
+}
+@media(max-width:780px){
+  #dts-gsite .wrap{padding-left:18px;padding-right:18px}
+  #dts-gsite .nav{min-height:68px}
+  #dts-gsite .hero{padding:48px 0 54px}
+  #dts-gsite .hero h1{font-size:clamp(45px,13vw,72px)}
+  #dts-gsite .hero-photo{height:420px;min-height:0}
+  #dts-gsite .section{min-height:auto;padding:58px 0}
+}
+@media(max-width:480px){
+  #dts-gsite .wrap{padding-left:15px;padding-right:15px}
+  #dts-gsite .hero-photo{height:320px}
+}
+
+/* === GOOGLE SITES FULL-WIDTH MODE === */
+html,body,#dts-gsite{width:100%;min-width:0}
+.wrap{width:100%;max-width:none;margin-inline:0;padding-inline:clamp(22px,4vw,64px)}
+.topstrip .wrap,.nav{width:100%;max-width:none}
+.hero{padding:clamp(48px,6vw,82px) 0 clamp(52px,6vw,72px)}
+.hero-grid{width:100%;grid-template-columns:minmax(0,1.02fr) minmax(0,.98fr);gap:clamp(28px,4vw,64px)}
+.hero-copy{min-width:0}
+.hero-photo{width:100%;height:clamp(430px,66vh,640px);min-height:430px}
+.section{padding:clamp(58px,6vw,82px) 0}
+.section > .wrap{width:100%}
+.home-grid{grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(16px,1.8vw,24px)}
+.stage-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(16px,1.8vw,24px)}
+.event-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(16px,1.8vw,24px)}
+.museum-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(18px,2vw,28px)}
+.quiz-layout{grid-template-columns:minmax(0,1fr) minmax(280px,.75fr);gap:clamp(24px,4vw,48px)}
+.about-grid{grid-template-columns:minmax(0,1.15fr) minmax(300px,.85fr)}
+@media(max-width:1050px){
+  .wrap{padding-inline:clamp(20px,3.2vw,42px)}
+  .hero-grid{grid-template-columns:1fr;gap:34px}
+  .hero-photo{height:min(560px,68vw);min-height:360px}
+  .home-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .stage-grid,.event-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .quiz-layout,.about-grid{grid-template-columns:1fr}
+}
+@media(max-width:780px){
+  .wrap{padding-inline:18px}
+  .hero{padding:48px 0 45px}
+  .hero-photo{height:340px;min-height:0}
+  .home-grid,.stage-grid,.event-grid,.museum-grid{grid-template-columns:1fr}
+  .section{padding:50px 0}
+}
+@media(max-width:480px){.hero-photo{height:300px}.wrap{padding-inline:15px}}
+/* Make the embedded document feel like the page itself rather than a narrow card. */
+.topstrip,.top,.hero,.section,.quiz-page,footer{width:100%}
+</style>
+</head>
+<body>
+<div id="dts-gsite">
+<div class="topstrip"><div class="wrap"><span><b>DÒNG THỜI GIAN SỐ</b> · Dự án Lịch sử 12</span><span>12A9 · THPT KẾ SÁCH</span></div></div>
+<header class="top"><div class="wrap nav"><div class="brand"><div class="brand-mark">★</div><div><small>LỊCH SỬ VIỆT NAM · 1945 — NAY</small><strong>DÒNG THỜI GIAN SỐ</strong></div></div><button aria-label="Mở menu" class="menu">☰</button><nav class="links"><a data-go="home">Trang chủ</a><a data-go="timeline">Dòng thời gian</a><a data-go="events">Sự kiện</a><a data-go="museum">Bảo tàng số</a><a data-go="quiz">Thử thách</a><a data-go="about">Giới thiệu</a></nav></div></header>
+<main>
+<section class="page" data-page="home"><section class="hero"><div class="wrap hero-grid"><div><div class="eyebrow">DỰ ÁN LỊCH SỬ 12 · SẢN PHẨM HỌC TẬP</div><h1>DÒNG THỜI GIAN SỐ</h1><h2>Lịch sử Việt Nam từ năm 1945 đến nay</h2><p>Hành trình khám phá những dấu mốc lịch sử quan trọng của Việt Nam từ Cách mạng tháng Tám năm 1945, các cuộc kháng chiến bảo vệ độc lập và thống nhất đất nước, đến công cuộc Đổi mới và hội nhập quốc tế.</p><div class="rule"></div><p><b>Thực hiện bởi:</b> Kim Phúc · Thiên Tân · Đức Trí · Hoàng Phi<br/><b>Lớp 12A9 · Trường THPT Kế Sách</b></p><div class="actions"><button class="btn primary" data-go="timeline">Khám phá dòng thời gian</button><button class="btn light" data-go="events">Xem sự kiện</button></div></div><div aria-label="Trình chiếu tư liệu lịch sử tự động" class="hero-photo" id="heroCarousel">
+<div class="hero-slide active" data-index="0"><img alt="Quảng trường Ba Đình ngày 2/9/1945" src="https://commons.wikimedia.org/wiki/Special:FilePath/Ba_Dinh_Square_September_2nd,_1945.jpg"/><div class="photo-wash"></div><div class="photo-badge">TƯ LIỆU LỊCH SỬ · 1945</div><div class="photo-caption"><b>Quảng trường Ba Đình · 02/09/1945</b><span>Ngày Chủ tịch Hồ Chí Minh đọc Tuyên ngôn Độc lập.</span></div></div>
+<div class="hero-slide" data-index="1"><img alt="Chiến thắng Điện Biên Phủ" loading="lazy" onerror="this.style.display='none';this.parentElement.insertAdjacentHTML('beforeend','&lt;div class=&quot;media-placeholder&quot;&gt;&lt;strong&gt;Ảnh tư liệu&lt;/strong&gt;&lt;span&gt;Mở nguồn bên dưới để xem bản gốc&lt;/span&gt;&lt;/div&gt;')" src="https://commons.wikimedia.org/wiki/Special:FilePath/Victory_in_Battle_of_Dien_Bien_Phu.jpg"/><div class="photo-wash"></div><div class="photo-badge">DẤU MỐC · 1954</div><div class="photo-caption"><b>Chiến thắng Điện Biên Phủ · 07/05/1954</b><span>Dấu mốc quyết định trong cuộc kháng chiến chống thực dân Pháp.</span></div></div>
+<div class="hero-slide" data-index="2"><img alt="Hội nghị Genève năm 1954" loading="lazy" onerror="this.style.display='none';this.parentElement.insertAdjacentHTML('beforeend','&lt;div class=&quot;media-placeholder&quot;&gt;&lt;strong&gt;Ảnh tư liệu&lt;/strong&gt;&lt;span&gt;Mở nguồn bên dưới để xem bản gốc&lt;/span&gt;&lt;/div&gt;')" src="https://commons.wikimedia.org/wiki/Special:FilePath/Paris_Peace_Accords_signing_1973.jpg"/><div class="photo-wash"></div><div class="photo-badge">TƯ LIỆU · 1954</div><div class="photo-caption"><b>Hội nghị Genève · 1954</b><span>Một dấu mốc ngoại giao quan trọng sau chiến thắng Điện Biên Phủ.</span></div></div>
+<div class="hero-slide" data-index="3"><img alt="Dinh Độc Lập" loading="lazy" onerror="this.style.display='none';this.parentElement.insertAdjacentHTML('beforeend','&lt;div class=&quot;media-placeholder&quot;&gt;&lt;strong&gt;Ảnh tư liệu&lt;/strong&gt;&lt;span&gt;Mở nguồn bên dưới để xem bản gốc&lt;/span&gt;&lt;/div&gt;')" src="https://commons.wikimedia.org/wiki/Special:FilePath/Independence_Palace_%289982528323%29.jpg"/><div class="photo-wash"></div><div class="photo-badge">DẤU MỐC · 1975</div><div class="photo-caption"><b>Dinh Độc Lập · 30/04/1975</b><span>Biểu tượng của thời khắc chiến tranh kết thúc ở miền Nam.</span></div></div>
+<div class="hero-slide" data-index="4"><img alt="Cờ ASEAN tại Thành phố Hồ Chí Minh" loading="lazy" onerror="this.style.display='none';this.parentElement.insertAdjacentHTML('beforeend','&lt;div class=&quot;media-placeholder&quot;&gt;&lt;strong&gt;Ảnh tư liệu&lt;/strong&gt;&lt;span&gt;Mở nguồn bên dưới để xem bản gốc&lt;/span&gt;&lt;/div&gt;')" src="https://commons.wikimedia.org/wiki/Special:FilePath/ASEAN_flags_in_Ho_Chi_Minh_City.jpg"/><div class="photo-wash"></div><div class="photo-badge">HỘI NHẬP · 1995</div><div class="photo-caption"><b>Việt Nam gia nhập ASEAN · 28/07/1995</b><span>Mở rộng hợp tác khu vực và tiến trình hội nhập quốc tế.</span></div></div>
+<div class="photo-frame"></div>
+<div class="hero-vignette"></div>
+<div aria-hidden="true" class="hero-progress"><span></span></div>
+<div aria-label="Điều khiển trình chiếu" class="hero-controls">
+<button aria-label="Ảnh trước" class="hero-arrow hero-prev" type="button">‹</button>
+<button aria-label="Ảnh tiếp theo" class="hero-arrow hero-next" type="button">›</button>
+</div>
+<div class="hero-meta"><span class="hero-counter"><b>01</b> / 05</span><span class="hero-hint">Kéo để khám phá · Tự động chuyển</span></div>
+<div aria-label="Chọn hình ảnh" class="hero-dots">
+<button aria-label="Hình 1" class="hero-dot active" data-slide="0"></button><button aria-label="Hình 2" class="hero-dot" data-slide="1"></button><button aria-label="Hình 3" class="hero-dot" data-slide="2"></button><button aria-label="Hình 4" class="hero-dot" data-slide="3"></button><button aria-label="Hình 5" class="hero-dot" data-slide="4"></button>
+</div></div></div></section>
+<section class="section"><div class="wrap"><div class="section-head"><div><div class="eyebrow">BẮT ĐẦU HÀNH TRÌNH</div><h3>4 chuyên mục chính</h3><p class="section-sub">Mỗi thẻ đều có nội dung, hình ảnh, mốc thời gian và nút chuyển trang.</p></div></div><div class="home-grid"><article class="home-card"><div class="home-icon">🕰️</div><h4>Dòng thời gian</h4><p>Đi theo các chặng 1945–1954, 1954–1975, 1975–1986, 1986–2000 và 2000–nay; đồng thời có chuyên đề riêng về thành tựu và bài học Đổi mới.</p><button class="btn primary" data-go="timeline">Mở trang →</button></article><article class="home-card"><div class="home-icon">📚</div><h4>Sự kiện lịch sử</h4><p>16 sự kiện tiêu biểu từ Cách mạng tháng Tám, kháng chiến, thống nhất đến Đổi mới và hội nhập.</p><button class="btn primary" data-go="events">Mở trang →</button></article><article class="home-card"><div class="home-icon">🖼️</div><h4>Bảo tàng số</h4><p>16 hồ sơ tư liệu theo 4 giai đoạn: video trực tiếp, hình ảnh hiện vật, tư liệu âm thanh và tour tham quan số.</p><button class="btn primary" data-go="museum">Mở trang →</button></article><article class="home-card"><div class="home-icon">🎯</div><h4>Thử thách lịch sử</h4><p>Bộ câu hỏi trắc nghiệm tương tác, có phản hồi ngay, tính điểm và nút làm lại để tự kiểm tra kiến thức.</p><button class="btn primary" data-go="quiz">Bắt đầu →</button></article></div></div></section>
+<section class="section alt"><div class="wrap"><div class="intro-box"><h4>Mục tiêu của dự án</h4><p>Biến kiến thức Lịch sử 12 thành một trải nghiệm học tập trực quan: học sinh có thể đọc theo dòng thời gian, mở hồ sơ sự kiện, quan sát tư liệu hình ảnh, kiểm tra kiến thức và tìm đến nguồn tham khảo.</p><div class="pillrow"><span class="pill">1945 — độc lập</span><span class="pill">1954 — Điện Biên Phủ</span><span class="pill">1975 — thống nhất</span><span class="pill">1986 — Đổi mới</span><span class="pill">1995 — ASEAN</span><span class="pill">2007 — WTO</span><span class="pill">2000 — nay</span></div></div></div></section></section>
+<section class="page" data-page="timeline"><section class="section"><div class="wrap"><div class="section-head"><div><div class="eyebrow">CHUYÊN MỤC 01</div><h3>Dòng thời gian</h3><p class="section-sub">Những dấu mốc tiêu biểu từ Cách mạng tháng Tám năm 1945, các cuộc kháng chiến, thống nhất đất nước đến Đổi mới và hội nhập.</p></div><button class="btn light" data-go="home">← Trang chủ</button></div><div class="timeline-wrap"><div class="timeline-line"></div><div class="timeline-points"><div class="point"><div class="point-dot"></div><b>1945</b><small>Cách mạng tháng Tám</small></div><div class="point"><div class="point-dot"></div><b>1954</b><small>Điện Biên Phủ · Genève</small></div><div class="point"><div class="point-dot"></div><b>1975</b><small>Giải phóng miền Nam</small></div><div class="point"><div class="point-dot"></div><b>1976</b><small>Thống nhất nhà nước</small></div><div class="point"><div class="point-dot"></div><b>1986</b><small>Đường lối Đổi mới</small></div><div class="point"><div class="point-dot"></div><b>NAY</b><small>Phát triển &amp; hội nhập</small></div></div></div><div class="stage-grid"><article class="stage-card"><div class="stage-top"><b>01 · 1945</b><span>Cách mạng tháng Tám và Nhà nước mới</span></div><div class="stage-body"><h4>Cách mạng tháng Tám năm 1945</h4><p>Tháng 8/1945, khởi nghĩa giành chính quyền diễn ra ở nhiều địa phương. Tại Hà Nội, ngày 19/8 là mốc thắng lợi quan trọng. Ngày 2/9/1945, Chủ tịch Hồ Chí Minh đọc Tuyên ngôn Độc lập tại Ba Đình.</p><ul><li>19/8/1945: khởi nghĩa giành chính quyền ở Hà Nội.</li><li>2/9/1945: Tuyên ngôn Độc lập.</li><li>Ý nghĩa: mở ra thời kỳ mới của lịch sử dân tộc.</li></ul><span class="detail-link" data-modal="m1945">Xem chi tiết →</span></div></article><article class="stage-card"><div class="stage-top"><b>02 · 1945–1954</b><span>Kháng chiến chống thực dân Pháp</span></div><div class="stage-body"><h4>Kháng chiến trường kỳ</h4><p>Ngày 19/12/1946, Lời kêu gọi Toàn quốc kháng chiến được phát đi. Cuộc kháng chiến trải qua các chiến dịch lớn, đỉnh cao là Chiến dịch Điện Biên Phủ năm 1954.</p><ul><li>1947: Chiến dịch Việt Bắc.</li><li>1950: Chiến dịch Biên giới.</li><li>13/3–7/5/1954: Chiến dịch Điện Biên Phủ.</li></ul><span class="detail-link" data-modal="m1954">Xem chi tiết →</span></div></article><article class="stage-card"><div class="stage-top"><b>03 · 1954–1975</b><span>Kháng chiến chống Mỹ, cứu nước</span></div><div class="stage-body"><h4>Đấu tranh vì thống nhất</h4><p>Sau Hiệp định Genève 1954, Việt Nam bước vào thời kỳ đất nước tạm thời bị chia cắt. Miền Bắc xây dựng và chi viện; miền Nam tiếp tục đấu tranh. Năm 1975, Chiến dịch Hồ Chí Minh kết thúc bằng thắng lợi ngày 30/4.</p><ul><li>1954: Hiệp định Genève.</li><li>1973: Hiệp định Paris.</li><li>30/4/1975: giải phóng miền Nam.</li></ul><span class="detail-link" data-modal="m1975">Xem chi tiết →</span></div></article><article class="stage-card"><div class="stage-top"><b>04 · 1975–1986</b><span>Xây dựng và bảo vệ Tổ quốc</span></div><div class="stage-body"><h4>Thời kỳ sau thống nhất</h4><p>Sau 1975, đất nước bước vào công cuộc khôi phục và xây dựng. Việt Nam đồng thời thực hiện nhiệm vụ bảo vệ biên giới và làm nhiệm vụ quốc tế. Những khó khăn kinh tế – xã hội đặt ra yêu cầu đổi mới.</p><ul><li>1975: đất nước thống nhất.</li><li>1979: chiến tranh bảo vệ biên giới phía Bắc và Tây Nam.</li><li>1986: Đại hội VI mở ra công cuộc Đổi mới.</li></ul><span class="detail-link" data-modal="m1986">Xem chi tiết →</span></div></article><article class="stage-card"><div class="stage-top"><b>05 · 1986–2000</b><span>Đổi mới và mở rộng quan hệ</span></div><div class="stage-body"><h4>Đổi mới · hội nhập khu vực</h4><p>Đại hội VI (12/1986) khởi xướng đường lối Đổi mới. Trong thập niên 1990, Việt Nam mở rộng quan hệ đối ngoại và hội nhập kinh tế khu vực, tiêu biểu là việc gia nhập ASEAN năm 1995.</p><ul><li>1986: Đại hội VI.</li><li>1995: gia nhập ASEAN.</li><li>2000: Hiệp định Thương mại Việt Nam – Hoa Kỳ được ký.</li></ul><span class="detail-link" data-modal="m2000">Xem chi tiết →</span></div></article><article class="stage-card"><div class="stage-top"><b>06 · 2000–nay</b><span>Hội nhập quốc tế và phát triển</span></div><div class="stage-body"><h4>Việt Nam trong thế kỷ XXI</h4><p>Hội nhập quốc tế tiếp tục được đẩy mạnh. Việt Nam gia nhập WTO ngày 11/1/2007 và tham gia ngày càng sâu vào các cơ chế hợp tác khu vực, toàn cầu.</p><ul><li>2007: thành viên WTO thứ 150.</li><li>2015: Cộng đồng ASEAN được thành lập.</li><li>Nay: tiếp tục hội nhập và phát triển.</li></ul><span class="detail-link" data-modal="mnow">Xem chi tiết →</span></div></article></div><div class="intro-box" style="margin-top:20px"><h4>Chuyên đề: Thành tựu và bài học của công cuộc Đổi mới</h4><p>Đổi mới từ 1986 tạo chuyển biến sâu rộng trong tổ chức nền kinh tế, đời sống xã hội và quan hệ đối ngoại. Khi học phần này, nên chú ý mối liên hệ giữa <b>đổi mới tư duy</b>, <b>phát triển kinh tế</b>, <b>ổn định xã hội</b> và <b>hội nhập quốc tế</b>.</p><p><b>Bài học gợi ý:</b> xuất phát từ thực tiễn; tôn trọng quy luật khách quan; phát huy nội lực; chủ động hội nhập; coi trọng ổn định và đồng thuận xã hội.</p><a class="source-link" href="https://baochinhphu.vn/nhin-lai-30-nam-doi-moi-va-hoi-nhap-102214817.htm" rel="noopener noreferrer" target="_blank">Nguồn: Báo Điện tử Chính phủ →</a></div></div></section></section>
+<section class="page" data-page="events"><section class="section alt"><div class="wrap"><div class="section-head"><div><div class="eyebrow">CHUYÊN MỤC 02</div><h3>Sự kiện lịch sử</h3><p class="section-sub">16 sự kiện lịch sử theo yêu cầu: bối cảnh, diễn biến, ý nghĩa và liên kết nguồn tham khảo.</p></div><button class="btn light" data-go="home">← Trang chủ</button></div><section class="intro-box" style="margin:0 0 28px;padding:24px 26px">
+<h4 style="color:#8f2c21;font-size:23px;margin:0 0 12px">DẤU ẤN HỒ CHÍ MINH · CÁCH MẠNG THÁNG TÁM 1945</h4>
+<p>Tháng 8/1945, dưới sự lãnh đạo của Đảng và Chủ tịch Hồ Chí Minh, nhân dân cả nước đồng loạt nổi dậy Tổng khởi nghĩa giành chính quyền. Ngày 2/9/1945, tại Quảng trường Ba Đình, Chủ tịch Hồ Chí Minh đọc <i>Tuyên ngôn Độc lập</i>, khai sinh nước Việt Nam Dân chủ Cộng hòa.</p>
+<h4 style="margin:16px 0 6px">1. Bối cảnh</h4>
+<p><b>Thế giới:</b> Đầu tháng 8/1945, phát xít Nhật đứng trước thất bại; tình hình Đông Dương biến động nhanh chóng.</p>
+<p><b>Trong nước:</b> Đảng nhận định thời cơ giành chính quyền đã chín muồi và quyết định phát động Tổng khởi nghĩa trước khi quân Đồng minh vào Đông Dương.</p>
+<h4 style="margin:16px 0 6px">2. Một số sự kiện chính</h4>
+<ul style="padding-left:22px;line-height:1.8">
+<li><b>14–18/8:</b> Khởi nghĩa giành chính quyền sớm ở một số địa phương, trong đó có Bắc Giang, Hải Dương, Hà Tĩnh và Quảng Nam.</li>
+<li><b>19/8:</b> Khởi nghĩa giành thắng lợi tại Hà Nội.</li>
+<li><b>23/8:</b> Giành chính quyền tại Huế.</li>
+<li><b>25/8:</b> Giành chính quyền tại Sài Gòn.</li>
+<li><b>30/8:</b> Vua Bảo Đại thoái vị, chế độ quân chủ chấm dứt.</li>
+<li><b>02/9:</b> Chủ tịch Hồ Chí Minh đọc Tuyên ngôn Độc lập tại Quảng trường Ba Đình.</li>
+</ul>
+<h4 style="margin:16px 0 6px">3. Ý nghĩa lịch sử</h4>
+<p><b>Đối với dân tộc:</b> Đập tan ách thống trị thực dân và phong kiến, đưa nhân dân từ thân phận nô lệ trở thành người làm chủ đất nước, mở ra kỷ nguyên độc lập, tự do.</p>
+<p><b>Đối với thế giới:</b> Cổ vũ phong trào giải phóng dân tộc và các dân tộc bị áp bức đấu tranh giành độc lập.</p>
+<p style="margin-top:12px"><b>Nguồn tham khảo:</b> <a href="https://www.lamdong.edu.vn/ldg/vi/sgddetail/?param=cach-mang-thang-tam-nam-1945-su-kien-vi-dai-trong-lich-su-dan-toc-viet-nam" target="_blank" rel="noopener noreferrer">Cách mạng Tháng Tám năm 1945 – Sở GD&amp;ĐT Lâm Đồng ↗</a> · <a href="https://vtv4.vtv.vn/chinh-tri/cach-mang-thang-tam-1945-cuoc-cach-mang-vi-con-nguoi-vi-quyen-song-quyen-tu-do-quyen-muu-cau-hanh-phuc-21991.html" target="_blank" rel="noopener noreferrer">VTV4: Cách mạng Tháng Tám 1945 ↗</a></p>
+<div class="museum-actions" style="margin-top:14px"><a href="https://www.youtube.com/watch?v=JF9Sgpc-uaI" target="_blank" rel="noopener noreferrer">▶ Xem video trực tiếp: Cách mạng Tháng Tám 1945 ↗</a></div>
+</section>
+<div class="event-grid"><article class="event-card"><div class="year">19/08/1945</div><span class="tag">CÁCH MẠNG THÁNG TÁM</span><h4>Khởi nghĩa giành chính quyền ở Hà Nội</h4><p>Ngày 19/8/1945, quần chúng Hà Nội xuống đường, chiếm các cơ quan quan trọng và giành chính quyền thắng lợi.</p><div class="why"><b>Ý nghĩa: </b>Mở ra bước ngoặt quyết định, cổ vũ Tổng khởi nghĩa trong cả nước.</div><a class="source-link" href="https://baochinhphu.vn/" rel="noopener noreferrer" target="_blank">Nguồn: Cổng Thông tin điện tử Chính phủ ↗</a></article><article class="event-card"><div class="year">02/09/1945</div><span class="tag">ĐỘC LẬP</span><h4>Chủ tịch Hồ Chí Minh đọc Tuyên ngôn Độc lập</h4><p>Tại Quảng trường Ba Đình, Chủ tịch Hồ Chí Minh đọc Tuyên ngôn Độc lập, tuyên bố sự ra đời của nước Việt Nam Dân chủ Cộng hòa.</p><div class="why"><b>Ý nghĩa: </b>Khẳng định nền độc lập và quyền tự quyết của dân tộc; ngày 2/9 trở thành Quốc khánh Việt Nam.</div><a class="source-link" href="https://media.chinhphu.vn/chu-tich-ho-chi-minh-doc-tuyen-ngon-doc-lap-nam-1945-102260831123435279.htm" rel="noopener noreferrer" target="_blank">Nguồn: Cổng Thông tin điện tử Chính phủ ↗</a></article><article class="event-card"><div class="year">23/09/1945</div><span class="tag">NAM BỘ KHÁNG CHIẾN</span><h4>Nam Bộ mở đầu cuộc kháng chiến</h4><p>Sau khi thực dân Pháp gây hấn ở Sài Gòn, quân và dân Nam Bộ đứng lên kháng chiến, bảo vệ nền độc lập vừa giành được.</p><div class="why"><b>Ý nghĩa: </b>Thể hiện ý chí bảo vệ chính quyền cách mạng và độc lập dân tộc.</div><a class="source-link" href="https://baochinhphu.vn/" rel="noopener noreferrer" target="_blank">Nguồn: Báo Điện tử Chính phủ ↗</a></article><article class="event-card"><div class="year">19/12/1946</div><span class="tag">TOÀN QUỐC KHÁNG CHIẾN</span><h4>Lời kêu gọi Toàn quốc kháng chiến</h4><p>Chủ tịch Hồ Chí Minh ra Lời kêu gọi Toàn quốc kháng chiến, kêu gọi toàn dân đứng lên chống thực dân Pháp.</p><div class="why"><b>Ý nghĩa: </b>Thể hiện quyết tâm bảo vệ độc lập, mở đầu cuộc kháng chiến toàn quốc trường kỳ.</div><a class="source-link" href="https://hochiminh.vn/" rel="noopener noreferrer" target="_blank">Nguồn: Hồ Chí Minh – tư liệu ↗</a></article><article class="event-card"><div class="year">Thu–Đông 1947</div><span class="tag">CHIẾN DỊCH VIỆT BẮC</span><h4>Chiến dịch Việt Bắc</h4><p>Quân và dân Việt Nam đánh bại cuộc tiến công quy mô lớn của quân Pháp lên căn cứ địa Việt Bắc.</p><div class="why"><b>Ý nghĩa: </b>Bảo vệ cơ quan đầu não kháng chiến và làm thất bại chiến lược “đánh nhanh thắng nhanh”.</div><a class="source-link" href="https://mod.gov.vn/" rel="noopener noreferrer" target="_blank">Nguồn: Bộ Quốc phòng ↗</a></article><article class="event-card"><div class="year">Thu–Đông 1950</div><span class="tag">CHIẾN DỊCH BIÊN GIỚI</span><h4>Chiến dịch Biên giới</h4><p>Quân ta mở chiến dịch tiến công, khai thông tuyến biên giới Việt–Trung và mở rộng căn cứ địa Việt Bắc.</p><div class="why"><b>Ý nghĩa: </b>Giành thế chủ động hơn trên chiến trường chính Bắc Bộ, đưa kháng chiến phát triển sang giai đoạn mới.</div><a class="source-link" href="https://mod.gov.vn/" rel="noopener noreferrer" target="_blank">Nguồn: Bộ Quốc phòng ↗</a></article><article class="event-card"><div class="year">13/03–07/05/1954</div><span class="tag">ĐIỆN BIÊN PHỦ</span><h4>Chiến thắng Điện Biên Phủ</h4><p>Sau 56 ngày đêm chiến đấu, quân và dân Việt Nam giành thắng lợi tại tập đoàn cứ điểm Điện Biên Phủ.</p><div class="why"><b>Ý nghĩa: </b>Giáng đòn quyết định vào ý chí xâm lược của thực dân Pháp, tạo điều kiện thuận lợi cho đàm phán Genève.</div><a class="source-link" href="https://btlsqsvn.mod.gov.vn/" rel="noopener noreferrer" target="_blank">Nguồn: Bảo tàng Lịch sử Quân sự Việt Nam ↗</a></article><article class="event-card"><div class="year">21/07/1954</div><span class="tag">HIỆP ĐỊNH GENÈVE</span><h4>Ký kết Hiệp định Genève</h4><p>Hiệp định Genève về đình chỉ chiến sự ở Việt Nam, Lào và Campuchia được ký kết trong khuôn khổ giải quyết chiến tranh Đông Dương.</p><div class="why"><b>Ý nghĩa: </b>Chấm dứt chiến tranh Đông Dương do Pháp tiến hành; miền Bắc Việt Nam được giải phóng, đất nước tạm thời bị chia cắt.</div><a class="source-link" href="https://mofa.gov.vn/" rel="noopener noreferrer" target="_blank">Nguồn: Bộ Ngoại giao ↗</a></article><article class="event-card"><div class="year">1959–1960</div><span class="tag">ĐỒNG KHỞI</span><h4>Phong trào Đồng khởi</h4><p>Phong trào nổi dậy lan rộng ở miền Nam, tiêu biểu là Bến Tre năm 1960, làm lung lay bộ máy chính quyền cơ sở của chính quyền Sài Gòn.</p><div class="why"><b>Ý nghĩa: </b>Đưa cách mạng miền Nam chuyển từ thế giữ gìn lực lượng sang thế tiến công.</div><a class="source-link" href="https://baochinhphu.vn/" rel="noopener noreferrer" target="_blank">Nguồn: Cổng Thông tin điện tử Chính phủ ↗</a></article><article class="event-card"><div class="year">02/01/1963</div><span class="tag">ẤP BẮC</span><h4>Chiến thắng Ấp Bắc</h4><p>Quân giải phóng và lực lượng vũ trang địa phương đánh bại cuộc hành quân của quân đội Sài Gòn có cố vấn và phương tiện Mỹ hỗ trợ tại Ấp Bắc.</p><div class="why"><b>Ý nghĩa: </b>Cổ vũ phong trào đấu tranh và cho thấy các chiến thuật quân sự của đối phương có thể bị đánh bại.</div><a class="source-link" href="https://mod.gov.vn/" rel="noopener noreferrer" target="_blank">Nguồn: Bộ Quốc phòng ↗</a></article><article class="event-card"><div class="year">Tết Mậu Thân 1968</div><span class="tag">MẬU THÂN</span><h4>Tổng tiến công và nổi dậy Xuân Mậu Thân 1968</h4><p>Quân và dân ta tiến công trên nhiều đô thị và địa bàn ở miền Nam trong dịp Tết Mậu Thân.</p><div class="why"><b>Ý nghĩa: </b>Tạo tác động chính trị lớn, góp phần buộc Mỹ xuống thang chiến tranh và chấp nhận đàm phán tại Paris.</div><a class="source-link" href="https://special.nhandan.vn/khang_chien_chong_my_cuu_nuoc_thang_loi_vi_dai_cua_Viet_Nam/index.html" rel="noopener noreferrer" target="_blank">Nguồn: Báo Nhân Dân ↗</a></article><article class="event-card"><div class="year">27/01/1973</div><span class="tag">HIỆP ĐỊNH PARIS</span><h4>Ký kết Hiệp định Paris</h4><p>Hiệp định về chấm dứt chiến tranh, lập lại hòa bình ở Việt Nam được ký tại Paris.</p><div class="why"><b>Ý nghĩa: </b>Buộc Mỹ và đồng minh rút quân theo các điều khoản của hiệp định, tạo điều kiện thuận lợi cho cuộc đấu tranh đi tới thống nhất.</div><a class="source-link" href="https://mofa.gov.vn/" rel="noopener noreferrer" target="_blank">Nguồn: Bộ Ngoại giao ↗</a></article><article class="event-card"><div class="year">30/04/1975</div><span class="tag">ĐẠI THẮNG MÙA XUÂN</span><h4>Chiến dịch Hồ Chí Minh toàn thắng</h4><p>Quân giải phóng tiến vào Sài Gòn; trưa 30/4/1975, chiến dịch Hồ Chí Minh kết thúc thắng lợi.</p><div class="why"><b>Ý nghĩa: </b>Kết thúc chiến tranh, giải phóng miền Nam và mở ra thời kỳ đất nước tiến tới thống nhất.</div><a class="source-link" href="https://mod.gov.vn/" rel="noopener noreferrer" target="_blank">Nguồn: Bộ Quốc phòng ↗</a></article><article class="event-card"><div class="year">24/06–03/07/1976</div><span class="tag">THỐNG NHẤT NHÀ NƯỚC</span><h4>Quốc hội khóa VI quyết định thống nhất về mặt Nhà nước</h4><p>Tại kỳ họp thứ nhất, Quốc hội khóa VI quyết định tên nước là Cộng hòa xã hội chủ nghĩa Việt Nam và các vấn đề trọng yếu của Nhà nước thống nhất.</p><div class="why"><b>Ý nghĩa: </b>Hoàn thành thống nhất đất nước về mặt Nhà nước sau thắng lợi năm 1975.</div><a class="source-link" href="https://quochoi.vn/" rel="noopener noreferrer" target="_blank">Nguồn: Quốc hội Việt Nam ↗</a></article><article class="event-card"><div class="year">15–18/12/1986</div><span class="tag">ĐỔI MỚI</span><h4>Đại hội VI – mở đầu công cuộc Đổi mới</h4><p>Đại hội đại biểu toàn quốc lần thứ VI đề ra đường lối Đổi mới, đổi mới tư duy và cách thức tổ chức phát triển đất nước.</p><div class="why"><b>Ý nghĩa: </b>Mở ra bước ngoặt trong quá trình phát triển kinh tế – xã hội và mở rộng quan hệ đối ngoại.</div><a class="source-link" href="https://tapchicongsan.org.vn/" rel="noopener noreferrer" target="_blank">Nguồn: Tạp chí Cộng sản ↗</a></article><article class="event-card"><div class="year">11/01/2007</div><span class="tag">WTO</span><h4>Việt Nam gia nhập Tổ chức Thương mại Thế giới</h4><p>Việt Nam chính thức trở thành thành viên thứ 150 của WTO.</p><div class="why"><b>Ý nghĩa: </b>Đánh dấu bước hội nhập sâu rộng vào hệ thống thương mại đa phương toàn cầu.</div><a class="source-link" href="https://www.wto.org/english/thewto_e/acc_e/a1_vietnam_e.htm" rel="noopener noreferrer" target="_blank">Nguồn: Tổ chức Thương mại Thế giới ↗</a></article></div></div></section></section>
+<section class="page" data-page="museum">
+<section class="section">
+<div class="wrap">
+<div class="section-head">
+<div>
+<div class="eyebrow">CHUYÊN MỤC 03 · KHÔNG GIAN TRIỂN LÃM</div>
+<h3>Bảo tàng số</h3>
+<p class="section-sub">4 giai đoạn lịch sử; mỗi giai đoạn có video tư liệu, hiện vật/hình ảnh, âm thanh hoặc nguồn phát thanh, và liên kết tham quan số.</p>
+</div>
+<button class="btn light" data-go="home">← Trang chủ</button>
+</div>
+<style>
+    #dts-gsite .museum-era{margin:32px 0 46px}
+    #dts-gsite .museum-era-head{display:flex;gap:16px;align-items:flex-start;margin-bottom:18px;padding-bottom:14px;border-bottom:1px solid #d9c8a8}
+    #dts-gsite .museum-era-number{display:grid;place-items:center;flex:0 0 44px;height:44px;border-radius:50%;background:#8f2c21;color:#fff;font-weight:800}
+    #dts-gsite .museum-era-head h4{font-family:Georgia,serif;font-size:clamp(21px,2vw,28px);margin:0 0 5px;color:#183e35}
+    #dts-gsite .museum-era-head p{margin:0;color:#68756c}
+    #dts-gsite .museum-exhibit-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+    #dts-gsite .museum-exhibit{overflow:hidden;border:1px solid #e4d8c2;border-radius:16px;background:#fffdf8;box-shadow:0 8px 24px #3b2b1510}
+    #dts-gsite .museum-media{height:245px;background:#e9e3d7;position:relative}
+    #dts-gsite .museum-media img{width:100%;height:100%;object-fit:cover;display:block}
+    #dts-gsite .museum-media iframe{width:100%;height:100%;border:0;display:block}
+    #dts-gsite .museum-media .media-placeholder{height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:24px;color:#315449;background:linear-gradient(135deg,#e9e1cf,#d8e2d6)}
+    #dts-gsite .museum-media .media-placeholder strong{font-family:Georgia,serif;font-size:21px;margin:8px 0}
+    #dts-gsite .museum-media .media-placeholder span{font-size:12px}
+    #dts-gsite .museum-exhibit-body{padding:18px 20px 20px}
+    #dts-gsite .museum-kind{font-size:10px;letter-spacing:1.2px;font-weight:800;color:#9b3a2b;text-transform:uppercase}
+    #dts-gsite .museum-exhibit-body h5{font-size:19px;line-height:1.35;margin:8px 0;color:#173c33}
+    #dts-gsite .museum-exhibit-body p{font-size:14px;line-height:1.7;color:#58665d;margin:0 0 10px}
+    #dts-gsite .museum-source{font-size:12px;color:#786d5b;margin:8px 0 14px}
+    #dts-gsite .museum-actions{display:flex;flex-wrap:wrap;gap:9px}
+    #dts-gsite .museum-actions a{display:inline-flex;align-items:center;gap:6px;border:1px solid #d8c6a5;border-radius:999px;padding:8px 12px;color:#783126;font-weight:700;font-size:12px;text-decoration:none}
+    #dts-gsite .museum-actions a:hover{background:#f4ead6}
+    #dts-gsite .museum-note{background:#f5efe2;border-left:4px solid #b47a39;border-radius:8px;padding:14px 16px;margin-top:18px;color:#645b4d;font-size:13px;line-height:1.65}
+    @media(max-width:760px){#dts-gsite .museum-exhibit-grid{grid-template-columns:1fr}#dts-gsite .museum-media{height:220px}#dts-gsite .museum-era-head h4{font-size:21px}}
+  </style>
+<section class="museum-era">
+<div class="museum-era-head"><div class="museum-era-number">01</div><div><h4>1945–1954 · Kháng chiến chống thực dân Pháp</h4><p>Từ ngày độc lập đến chiến thắng Điện Biên Phủ.</p></div></div>
+<div class="museum-exhibit-grid">
+<article class="museum-exhibit">
+<div class="museum-media"><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube-nocookie.com/embed/qvE5Zd9kHPY" title="Điện Biên Phủ 1954 - QPVN"></iframe></div>
+<div class="museum-exhibit-body"><div class="museum-kind">▶ Video tư liệu</div><h5>Chiến dịch Điện Biên Phủ 1954</h5><p>Thước phim tái hiện chiến dịch kéo dài 56 ngày đêm, từ công tác chuẩn bị, các đợt tiến công đến thời khắc chiến thắng.</p><div class="museum-source">Nguồn video: QPVN – Truyền hình Quốc phòng Việt Nam</div><div class="museum-actions"><a href="https://www.youtube.com/watch?v=qvE5Zd9kHPY" rel="noopener noreferrer" target="_blank">Mở video trực tiếp ↗</a></div></div>
+</article>
+<article class="museum-exhibit">
+<div class="museum-media"><img alt="Hội nghị Genève năm 1954" loading="lazy" onerror="this.style.display='none';this.parentElement.insertAdjacentHTML('beforeend','&lt;div class=&quot;media-placeholder&quot;&gt;&lt;strong&gt;Ảnh tư liệu&lt;/strong&gt;&lt;span&gt;Mở nguồn bên dưới để xem bản gốc&lt;/span&gt;&lt;/div&gt;')" src="https://commons.wikimedia.org/wiki/Special:FilePath/1954_Geneva_Conference.jpg"/></div>
+<div class="museum-exhibit-body"><div class="museum-kind">🖼️ Hình ảnh tư liệu</div><h5>Hội nghị Genève năm 1954</h5><p>Hình ảnh tư liệu về hội nghị ngoại giao sau chiến thắng Điện Biên Phủ, gắn với việc lập lại hòa bình ở Đông Dương.</p><div class="museum-source">Ảnh: Wikimedia Commons · Liên kết đọc thêm hiện vật: Bảo tàng Lịch sử Quốc gia</div><div class="museum-actions"><a href="https://baotanglichsu.vn/vi/Articles/1002/28378/xe-djap-tho.html" rel="noopener noreferrer" target="_blank">Đọc thêm: hồ sơ xe đạp thồ ↗</a></div></div>
+</article>
+<article class="museum-exhibit">
+<div class="museum-media"><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="True" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube-nocookie.com/embed/RzTxaGZ4bTw" title="Toàn văn Lời kêu gọi Toàn quốc kháng chiến ngày 19/12/1946"></iframe></div>
+<div class="museum-exhibit-body"><div class="museum-kind">🔊 Tư liệu âm thanh</div><h5>Lời kêu gọi Toàn quốc kháng chiến</h5><p>Nghe tư liệu âm thanh về lời hiệu triệu ngày 19/12/1946, kêu gọi toàn dân đứng lên bảo vệ nền độc lập.</p><div class="museum-source">Nguồn âm thanh và bài giới thiệu: Đài Tiếng nói Việt Nam (VOV2).</div><div class="museum-actions"><a href="https://vov2.vov.vn/van-hoa-giai-tri/loi-keu-goi-toan-quoc-khang-chien-loi-hich-cuu-nuoc-39423.vov2" rel="noopener noreferrer" target="_blank">Mở tư liệu âm thanh VOV2 ↗</a></div></div>
+</article>
+<article class="museum-exhibit">
+<div class="museum-media"><div class="media-placeholder"><span>🌐 THAM QUAN SỐ</span><strong>Âm vang Điện Biên</strong><span>Chương trình tour trực tuyến kết nối hai bảo tàng</span></div></div>
+<div class="museum-exhibit-body"><div class="museum-kind">🌐 Tour bảo tàng / tham quan số</div><h5>Không gian “Âm vang Điện Biên”</h5><p>Khám phá chủ đề hậu cần, hiện vật và chiến thắng Điện Biên Phủ qua chương trình tham quan trực tuyến kết nối Bảo tàng Lịch sử Quốc gia với Bảo tàng Chiến thắng lịch sử Điện Biên Phủ.</p><div class="museum-source">Nguồn: Bảo tàng Lịch sử Quốc gia và Bảo tàng Chiến thắng lịch sử Điện Biên Phủ.</div><div class="museum-actions"><a href="https://baotanglichsu.vn/VI/Articles/3316/73101/chuong-trinh-tham-quan-truc-tuyen-tour-online-chu-dje-am-vang-djien-bien-ket-noi-giua-bao-tang-lich-su-quoc-gia-va-bao-tang-chien-thang-lich-su-djien-bien-phu.html" rel="noopener noreferrer" target="_blank">Mở trang tour trực tuyến ↗</a></div></div>
+</article>
+</div>
+</section>
+<section class="museum-era">
+<div class="museum-era-head"><div class="museum-era-number">02</div><div><h4>1954–1975 · Kháng chiến chống Mỹ, cứu nước</h4><p>Những dấu mốc ngoại giao, chiến đấu và Đại thắng mùa Xuân 1975.</p></div></div>
+<div class="museum-exhibit-grid">
+<article class="museum-exhibit">
+<div class="museum-media"><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube-nocookie.com/embed/8hj7twvfkvw" title="50 năm Hiệp định Paris - VTV24"></iframe></div>
+<div class="museum-exhibit-body"><div class="museum-kind">▶ Video tư liệu</div><h5>Lễ ký kết Hiệp định Paris năm 1973</h5><p>Video nhìn lại sự kiện ký kết Hiệp định Paris ngày 27/1/1973 và tiến trình đàm phán kéo dài.</p><div class="museum-source">Nguồn video: VTV24</div><div class="museum-actions"><a href="https://www.youtube.com/watch?v=8hj7twvfkvw" rel="noopener noreferrer" target="_blank">Mở video trực tiếp ↗</a></div></div>
+</article>
+<article class="museum-exhibit">
+<div class="museum-media"><img alt="Tư liệu lễ ký Hiệp định Paris năm 1973" loading="lazy" onerror="this.style.display='none';this.parentElement.insertAdjacentHTML('beforeend','&lt;div class=&quot;media-placeholder&quot;&gt;&lt;strong&gt;Ảnh tư liệu&lt;/strong&gt;&lt;span&gt;Mở nguồn bên dưới để xem bản gốc&lt;/span&gt;&lt;/div&gt;')" src="https://commons.wikimedia.org/wiki/Special:FilePath/Paris_Peace_Accords_signing_1973.jpg"/></div>
+<div class="museum-exhibit-body"><div class="museum-kind">🖼️ Hình ảnh tư liệu</div><h5>Lễ ký Hiệp định Paris năm 1973</h5><p>Tư liệu hình ảnh về lễ ký Hiệp định Paris ngày 27/1/1973, một dấu mốc ngoại giao quan trọng trong cuộc kháng chiến chống Mỹ, cứu nước.</p><div class="museum-source">Nguồn ảnh: Wikimedia Commons</div><div class="museum-actions"><a href="https://chinhphu.vn/lich-su-68386" rel="noopener noreferrer" target="_blank">Đọc tư liệu lịch sử ↗</a></div></div>
+</article>
+<article class="museum-exhibit">
+<div class="museum-media"><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="True" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube-nocookie.com/embed/ujrJ9UM9PGE" title="Tư liệu VNEWS: Lời kêu gọi chống Mỹ, cứu nước ngày 17/7/1966"></iframe></div>
+<div class="museum-exhibit-body"><div class="museum-kind">🔊 Audio gốc / bản phát thanh</div><h5>Tư liệu phát thanh: Lời kêu gọi chống Mỹ, cứu nước</h5><p>Video tư liệu của VNEWS giới thiệu lời kêu gọi ngày 17/7/1966 và câu nói “Không có gì quý hơn độc lập, tự do”. Đây là bản ghi hình tư liệu, không phải tệp âm thanh MP3 độc lập.</p><div class="museum-source">Nguồn video tư liệu: VNEWS – Trung tâm Truyền hình Thông tấn.</div><div class="museum-actions"><a href="https://www.youtube.com/watch?v=ujrJ9UM9PGE" rel="noopener noreferrer" target="_blank">Mở tư liệu trực tiếp của VNEWS ↗</a></div></div>
+</article>
+<article class="museum-exhibit">
+<div class="museum-media"><div class="media-placeholder"><span>🌐 THAM QUAN SỐ</span><strong>Dinh Độc Lập</strong><span>Mở trang chính thức qua liên kết bên dưới</span></div></div>
+<div class="museum-exhibit-body"><div class="museum-kind">🌐 Tour bảo tàng / tham quan số</div><h5>Không gian lịch sử Dinh Độc Lập</h5><p>Tìm hiểu kiến trúc, các phòng trưng bày và diễn biến ngày 30/4/1975 tại di tích lịch sử.</p><div class="museum-source">Nguồn: Di tích lịch sử Dinh Độc Lập</div><div class="museum-actions"><a href="https://www.dinhdoclap.gov.vn/" rel="noopener noreferrer" target="_blank">Tham quan trang di tích ↗</a></div></div>
+</article>
+</div>
+</section>
+<section class="museum-era">
+<div class="museum-era-head"><div class="museum-era-number">03</div><div><h4>1975–1986 · Thống nhất và khôi phục đất nước</h4><p>Hoàn thành thống nhất về nhà nước, khôi phục kinh tế và bảo vệ biên giới.</p></div></div>
+<div class="museum-exhibit-grid">
+<article class="museum-exhibit">
+<div class="museum-media"><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube-nocookie.com/embed/ecJSxFzvSKk" title="30/4/1975 - Khoảnh khắc tháng tư lịch sử - VTV24"></iframe></div>
+<div class="museum-exhibit-body"><div class="museum-kind">▶ Video tư liệu</div><h5>Nhìn lại chặng đường đi tới thống nhất</h5><p>Tư liệu VTV24 ghi lại khoảnh khắc tháng Tư lịch sử khi quân giải phóng tiến vào Sài Gòn ngày 30/4/1975.</p><div class="museum-source">Nguồn video: VTV24</div><div class="museum-actions"><a href="https://www.youtube.com/watch?v=ecJSxFzvSKk" rel="noopener noreferrer" target="_blank">Mở video trực tiếp ↗</a></div></div>
+</article>
+<article class="museum-exhibit">
+<div class="museum-media"><img alt="Dinh Độc Lập, tư liệu về thời kỳ thống nhất" loading="lazy" onerror="this.style.display='none';this.parentElement.insertAdjacentHTML('beforeend','&lt;div class=&quot;media-placeholder&quot;&gt;&lt;strong&gt;Ảnh tư liệu&lt;/strong&gt;&lt;span&gt;Mở nguồn bên dưới để xem bản gốc&lt;/span&gt;&lt;/div&gt;')" src="https://commons.wikimedia.org/wiki/Special:FilePath/Independence_Palace_%289982528323%29.jpg"/></div>
+<div class="museum-exhibit-body"><div class="museum-kind">🖼️ Hình ảnh tư liệu</div><h5>Di tích Dinh Độc Lập</h5><p>Không gian trưng bày giúp kết nối sự kiện 30/4/1975 với quá trình hoàn thành thống nhất đất nước về mặt nhà nước năm 1976.</p><div class="museum-source">Nguồn ảnh: Wikimedia Commons · hồ sơ di tích tham khảo</div><div class="museum-actions"><a href="https://commons.wikimedia.org/wiki/File:Independence_Palace_(9982528323).jpg" rel="noopener noreferrer" target="_blank">Xem nguồn ảnh ↗</a></div></div>
+</article>
+<article class="museum-exhibit">
+<div class="museum-media"><a href="https://dangky80nam.vov.vn/" target="_blank" rel="noopener noreferrer" class="media-placeholder" style="text-decoration:none"><span>▶ NGHE TƯ LIỆU LỊCH SỬ</span><strong>Thanh âm lịch sử Việt Nam</strong><span>Tiếng nói Việt Nam · các dấu mốc lịch sử</span></a></div>
+<div class="museum-exhibit-body"><div class="museum-kind">🔊 Âm thanh tư liệu</div><h5>Thanh âm lịch sử thời kỳ sau thống nhất</h5><p>Mở kho tư liệu “Thanh âm lịch sử” của Đài Tiếng nói Việt Nam để nghe các bản ghi và lời phát thanh gắn với những dấu mốc lịch sử; chọn tư liệu phù hợp với giai đoạn sau năm 1975.</p><div class="museum-source">Nguồn trực tiếp: triển lãm tư liệu âm thanh của VOV.</div><div class="museum-actions"><a href="https://dangky80nam.vov.vn/" target="_blank" rel="noopener noreferrer">Mở kho nghe tư liệu VOV ↗</a></div></div>
+</article>
+<article class="museum-exhibit">
+<div class="museum-media"><div class="media-placeholder"><span>🌐 THAM QUAN SỐ</span><strong>Di tích lịch sử Dinh Độc Lập</strong><span>Hình ảnh, không gian và tư liệu trưng bày</span></div></div>
+<div class="museum-exhibit-body"><div class="museum-kind">🌐 Tham quan số</div><h5>Hồ sơ di tích Dinh Độc Lập</h5><p>Khám phá thông tin di tích và tư liệu trưng bày để tìm hiểu bối cảnh lịch sử giai đoạn thống nhất.</p><div class="museum-source">Nguồn: Di tích lịch sử Dinh Độc Lập</div><div class="museum-actions"><a href="https://www.dinhdoclap.gov.vn/" rel="noopener noreferrer" target="_blank">Mở trang di tích ↗</a></div></div>
+</article>
+</div>
+</section>
+<section class="museum-era">
+<div class="museum-era-head"><div class="museum-era-number">04</div><div><h4>1986–nay · Đổi mới và hội nhập quốc tế</h4><p>Đường lối Đổi mới, mở rộng quan hệ đối ngoại và tham gia các tổ chức quốc tế.</p></div></div>
+<div class="museum-exhibit-grid">
+<article class="museum-exhibit">
+<div class="museum-media"><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube-nocookie.com/embed/FZFsjsIKF_0" title="Đại hội VI năm 1986 - bước ngoặt lịch sử"></iframe></div>
+<div class="museum-exhibit-body"><div class="museum-kind">▶ Video tư liệu</div><h5>Đại hội VI năm 1986 – bước ngoặt Đổi mới</h5><p>Video nhìn lại bối cảnh Đại hội VI và những tranh luận, quyết sách gắn với công cuộc Đổi mới.</p><div class="museum-source">Nguồn video: BÍ ẨN SỬ VIỆT · video phân tích lịch sử</div><div class="museum-actions"><a href="https://www.youtube.com/watch?v=FZFsjsIKF_0" rel="noopener noreferrer" target="_blank">Mở video trực tiếp ↗</a></div></div>
+</article>
+<article class="museum-exhibit">
+<div class="museum-media"><img alt="Cờ ASEAN và Việt Nam trong tiến trình hội nhập" loading="lazy" onerror="this.style.display='none';this.parentElement.insertAdjacentHTML('beforeend','&lt;div class=&quot;media-placeholder&quot;&gt;&lt;strong&gt;Ảnh tư liệu&lt;/strong&gt;&lt;span&gt;Mở nguồn bên dưới để xem bản gốc&lt;/span&gt;&lt;/div&gt;')" src="https://commons.wikimedia.org/wiki/Special:FilePath/ASEAN_flags_in_Ho_Chi_Minh_City.jpg"/></div>
+<div class="museum-exhibit-body"><div class="museum-kind">🖼️ Hình ảnh tư liệu</div><h5>Việt Nam gia nhập ASEAN năm 1995</h5><p>Lá cờ và biểu tượng ASEAN gợi nhớ bước ngoặt hội nhập khu vực khi Việt Nam trở thành thành viên ASEAN ngày 28/7/1995.</p><div class="museum-source">Nguồn ảnh: Wikimedia Commons · tư liệu ASEAN</div><div class="museum-actions"><a href="https://commons.wikimedia.org/wiki/Category:Photographs_of_flags_of_Vietnam_in_Ho_Chi_Minh_City" rel="noopener noreferrer" target="_blank">Xem bộ sưu tập ảnh ↗</a></div></div>
+</article>
+<article class="museum-exhibit">
+<div class="museum-media"><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube-nocookie.com/embed/h6t0Nze5SUA" title="Ngày 28/7/1995, Việt Nam gia nhập ASEAN - Trung Ương TV"></iframe></div>
+<div class="museum-exhibit-body"><div class="museum-kind">▶ VIDEO TƯ LIỆU</div><h5>Việt Nam và hội nhập quốc tế: gia nhập ASEAN</h5><p>Xem video về sự kiện ngày 28/7/1995, khi Việt Nam chính thức trở thành thành viên thứ bảy của ASEAN. Đây là bước ngoặt quan trọng trong tiến trình hội nhập khu vực.</p><div class="museum-source">Nguồn video: Báo và Đài Truyền hình Trung Ương · YouTube.</div><div class="museum-actions"><a href="https://www.youtube.com/watch?v=h6t0Nze5SUA" target="_blank" rel="noopener noreferrer">▶ Xem video trực tiếp trên YouTube ↗</a><a href="https://vtv.vn/video/10-nam-viet-nam-gia-nhap-wto-223937.htm" target="_blank" rel="noopener noreferrer">▶ Xem thêm video: 10 năm Việt Nam gia nhập WTO ↗</a></div></div>
+</article>
+<article class="museum-exhibit">
+<div class="museum-media"><div class="media-placeholder"><span>🌐 THAM QUAN SỐ</span><strong>Bản đồ số Việt Nam trong ASEAN</strong><span>Quan hệ đối ngoại và hội nhập khu vực</span></div></div>
+<div class="museum-exhibit-body"><div class="museum-kind">🌐 Bản đồ số / tham quan</div><h5>Việt Nam trong không gian ASEAN</h5><p>Khám phá thông tin về ASEAN, quá trình mở rộng thành viên và vai trò của Việt Nam trong hợp tác khu vực.</p><div class="museum-source">Nguồn: ASEAN Secretariat</div><div class="museum-actions"><a href="https://asean.org/" rel="noopener noreferrer" target="_blank">Khám phá cổng ASEAN ↗</a></div></div>
+</article>
+</div>
+</section>
+
+</div>
+</section>
+</section>
+<section class="page" data-page="quiz"><section class="section quiz-page"><div class="wrap"><div class="section-head"><div><div class="eyebrow" style="color:#f4d56c">CHUYÊN MỤC 04</div><h3 style="color:#fff1d4">Thử thách lịch sử</h3><p class="section-sub" style="color:#f2dfbd">4 chặng · 20 câu hỏi tương tác · kết quả và giấy chứng nhận hoàn thành có thể in.</p></div><button class="btn light" data-go="home" style="color:#fff;border-color:#fff">← Trang chủ</button></div><div class="quiz-layout"><div class="quiz-box"><div class="pillrow" id="quizStage">Chặng 1: Hào hùng tập trận · Chặng 2: Bứt phá Đổi mới · Chặng 3: Giải mã tư liệu · Bài kiểm tra tổng hợp</div><div><b id="quizCount">Câu 1/20</b><div class="progress"><span id="quizProgress"></span></div></div><h4 id="quizQuestion">...</h4><div id="quizOptions"></div><div class="quiz-result" id="quizResult"></div><div class="actions"><button class="btn primary" id="quizNext" style="display:none">Câu tiếp theo →</button><button class="btn light" id="quizReset">Làm lại</button></div><div id="certificatePanel" style="display:none;margin-top:20px;padding:20px;border:1px solid #d8c394;border-radius:10px;background:#fffdf8"><h4 style="margin-top:0">🏆 Giấy chứng nhận hoàn thành</h4><p>Đạt từ 16/20 câu đúng để mở phần điền thông tin và in giấy chứng nhận hoàn thành thử thách.</p><label for="certName">Họ và tên</label><input id="certName" placeholder="Nhập họ và tên" style="display:block;width:100%;padding:10px;margin:6px 0 12px;border:1px solid #d8c394;border-radius:6px" type="text"/><label for="certClass">Lớp / Trường</label><input id="certClass" placeholder="Ví dụ: 12A9 – THPT Kế Sách" style="display:block;width:100%;padding:10px;margin:6px 0 12px;border:1px solid #d8c394;border-radius:6px" type="text"/><button class="btn primary" id="printCertificate" type="button">In giấy chứng nhận</button><p style="font-size:11px;color:#756e61">Lưu ý: giấy chứng nhận được tạo tại trình duyệt để in/lưu PDF; không phải chứng chỉ do cơ quan giáo dục cấp.</p></div></div><aside class="quiz-side"><h4>Bốn chặng thử thách</h4><ul><li>Chặng 1 – Hào hùng tập trận: các mốc 1945–1975.</li><li>Chặng 2 – Bứt phá Đổi mới: kinh tế, ASEAN, quan hệ Việt–Mỹ và WTO.</li><li>Chặng 3 – Giải mã tư liệu: nhận diện văn kiện, hình ảnh và hiện vật.</li><li>Bài kiểm tra tổng hợp: 5 câu cuối; cần đạt ít nhất 16/20 câu để mở giấy chứng nhận.</li></ul><p style="font-size:11px;color:#f3dfba">Mẹo: sau khi làm bài, quay lại Dòng thời gian để ôn các mốc bạn trả lời sai.</p></aside></div></div></section></section>
+<section class="page" data-page="about"><section class="section"><div class="wrap"><div class="section-head"><div><div class="eyebrow">CHUYÊN MỤC 05</div><h3>Giới thiệu dự án</h3><p class="section-sub">Thông tin nhóm, mục tiêu, hướng dẫn sử dụng và nguồn tư liệu.</p></div><button class="btn light" data-go="home">← Trang chủ</button></div><div class="about-grid"><div class="team-box"><h4>DÒNG THỜI GIAN SỐ</h4><p>Lịch sử Việt Nam từ năm 1945 đến nay</p><p><b>Lớp 12A9 · Trường THPT Kế Sách</b></p><p>Sản phẩm học tập nhằm hỗ trợ học sinh quan sát tiến trình lịch sử theo mốc thời gian, kết nối sự kiện với bối cảnh và kiểm tra kiến thức bằng tương tác số.</p><div class="pillrow"><span class="pill">Học tập</span><span class="pill">Tương tác</span><span class="pill">Tư liệu</span><span class="pill">Lịch sử 12</span></div></div><div class="intro-box"><h4>Nhóm thực hiện</h4><div class="people"><div class="person"><div class="avatar">KP</div><strong>Kim Phúc</strong><small>Nội dung · Biên tập</small></div><div class="person"><div class="avatar">TT</div><strong>Thiên Tân</strong><small>Tư liệu · Nghiên cứu</small></div><div class="person"><div class="avatar">ĐT</div><strong>Đức Trí</strong><small>Kỹ thuật · Lập trình</small></div><div class="person"><div class="avatar">HP</div><strong>Hoàng Phi</strong><small>Thiết kế · Trình bày</small></div></div></div></div><div class="info-grid"><article class="info-card"><h4>Mục tiêu sản phẩm</h4><ul><li>Hệ thống hóa lịch sử Việt Nam 1945–nay.</li><li>Giúp học sinh học theo mốc và theo giai đoạn.</li><li>Kết hợp chữ, hình ảnh, nguồn tư liệu và trắc nghiệm.</li><li>Khuyến khích kiểm chứng thông tin qua nguồn uy tín.</li></ul></article><article class="info-card"><h4>Hướng dẫn sử dụng</h4><ul><li>Chọn menu để chuyển giữa các trang.</li><li>Ở Dòng thời gian, bấm “Xem chi tiết” để đọc hồ sơ.</li><li>Ở Bảo tàng số, mở nguồn ảnh để xem bản gốc.</li><li>Ở Thử thách, chọn đáp án rồi xem phản hồi.</li></ul></article><article class="info-card"><h4>Cách học đề xuất</h4><p>Bước 1: đọc 6 giai đoạn. Bước 2: xem 16 sự kiện. Bước 3: khám phá 4 không gian Bảo tàng số. Bước 4: hoàn thành 3 chặng thử thách và bài kiểm tra tổng hợp.</p></article><article class="info-card"><h4>Nguồn tư liệu chính</h4><div class="sources-list"><a href="https://baochinhphu.vn/" target="_blank">Báo Điện tử Chính phủ</a><a href="https://www.mod.gov.vn/" target="_blank">Bộ Quốc phòng</a><a href="https://btlsqsvn.mod.gov.vn/" target="_blank">Bảo tàng Lịch sử Quân sự Việt Nam</a><a href="https://asean.org/" target="_blank">ASEAN</a><a href="https://www.wto.org/" target="_blank">WTO</a><a href="https://thuvienso.moj.gov.vn/" target="_blank">Thư viện Bộ Tư pháp</a><a href="https://commons.wikimedia.org/" target="_blank">Wikimedia Commons · nguồn ảnh</a><a href="https://ustr.gov/" target="_blank">U.S. Trade Representative (USTR)</a><button class="museum-more" type="button">Xem thêm tư liệu ảnh ↗</button></div></article></div><div class="intro-box" style="margin-top:20px"><h4>Ghi chú học thuật</h4><p>Nội dung trên website được biên soạn ở dạng tóm lược phục vụ học tập. Khi làm bài kiểm tra hoặc bài nghiên cứu, học sinh nên đối chiếu sách giáo khoa, tài liệu của giáo viên và văn bản/nguồn gốc được liên kết. Với hình ảnh, hãy xem trang nguồn để kiểm tra giấy phép và điều kiện sử dụng.</p></div></div></section></section>
+</main>
+<footer><div class="wrap"><div class="footer-grid"><div><div class="footer-title">★ DÒNG THỜI GIAN SỐ</div><p>LỊCH SỬ VIỆT NAM 1945 — NAY</p><p><b>Lớp 12A9 · Trường THPT Kế Sách</b></p></div><div><h5>ĐIỀU HƯỚNG</h5><a data-go="home">Trang chủ</a><br/><a data-go="timeline">Dòng thời gian</a><br/><a data-go="events">Sự kiện</a><br/><a data-go="museum">Bảo tàng số</a></div><div><h5>HỌC TẬP</h5><a data-go="quiz">Thử thách lịch sử</a><br/><a data-go="about">Giới thiệu dự án</a></div><div><h5>NHÓM THỰC HIỆN</h5><p>Kim Phúc · Thiên Tân<br/>Đức Trí · Hoàng Phi</p><p>12A9 · THPT Kế Sách</p></div></div><div class="copy"><span>© 2026 · Sản phẩm học tập lớp 12A9</span><span>Việt Nam · 1945 — Nay</span></div></div></footer>
+<div class="modal" id="historyModal"><div class="modal-box"><button class="modal-close" id="modalClose">×</button><div id="modalContent"></div></div></div>
+</div>
+<script>
+(function(){
+ const root=document.getElementById('dts-gsite');if(!root)return;
+ const pages=[...root.querySelectorAll('.page')];
+ function showPage(name,scroll=true){pages.forEach(p=>p.classList.toggle('active',p.dataset.page===name));root.querySelectorAll('[data-go]').forEach(x=>x.classList.toggle('active',x.dataset.go===name));if(scroll)root.scrollIntoView({behavior:'smooth',block:'start'});history.replaceState(null,'','#'+name);const links=root.querySelector('.links');if(links)links.classList.remove('open')}
+ root.querySelectorAll('[data-go]').forEach(x=>x.addEventListener('click',e=>{e.preventDefault();showPage(x.dataset.go)}));
+ const initial=(location.hash||'#home').slice(1);showPage(pages.some(p=>p.dataset.page===initial)?initial:'home',false);
+ const menu=root.querySelector('.menu'),links=root.querySelector('.links');if(menu&&links){menu.addEventListener('click',()=>links.classList.toggle('open'))}
+ const carousel=root.querySelector('#heroCarousel');
+ if(carousel){
+   const slides=[...carousel.querySelectorAll('.hero-slide')],dots=[...carousel.querySelectorAll('.hero-dot')],prev=carousel.querySelector('.hero-prev'),next=carousel.querySelector('.hero-next'),progress=carousel.querySelector('.hero-progress span'),counter=carousel.querySelector('.hero-counter b');
+   let current=0,timer=null,raf=null,startAt=0,paused=false,duration=5200,touchX=0;
+   function paintProgress(){if(!progress||paused)return;const pct=Math.min(100,((performance.now()-startAt)/duration)*100);progress.style.width=pct+'%';raf=requestAnimationFrame(paintProgress)}
+   function resetProgress(){if(progress)progress.style.width='0%';cancelAnimationFrame(raf);startAt=performance.now();raf=requestAnimationFrame(paintProgress)}
+   function goSlide(n){current=(n+slides.length)%slides.length;slides.forEach((s,i)=>s.classList.toggle('active',i===current));dots.forEach((d,i)=>{d.classList.toggle('active',i===current);d.setAttribute('aria-current',i===current?'true':'false')});if(counter)counter.textContent=String(current+1).padStart(2,'0');resetProgress()}
+   function start(){if(window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;clearInterval(timer);paused=false;resetProgress();timer=setInterval(()=>goSlide(current+1),duration)}
+   function stop(){clearInterval(timer);paused=true;cancelAnimationFrame(raf)}
+   dots.forEach(d=>d.addEventListener('click',()=>{goSlide(Number(d.dataset.slide));start()}));
+   prev?.addEventListener('click',()=>{goSlide(current-1);start()}); next?.addEventListener('click',()=>{goSlide(current+1);start()});
+   carousel.addEventListener('mouseenter',()=>{stop();carousel.classList.add('is-hovering')});carousel.addEventListener('mouseleave',()=>{carousel.classList.remove('is-hovering');start()});
+   carousel.addEventListener('focusin',stop);carousel.addEventListener('focusout',start);
+   carousel.addEventListener('touchstart',e=>{touchX=e.changedTouches[0].clientX;stop()},{passive:true});
+   carousel.addEventListener('touchend',e=>{const dx=e.changedTouches[0].clientX-touchX;if(Math.abs(dx)>45)goSlide(current+(dx<0?1:-1));start()},{passive:true});
+   carousel.addEventListener('keydown',e=>{if(e.key==='ArrowLeft'){e.preventDefault();goSlide(current-1);start()}if(e.key==='ArrowRight'){e.preventDefault();goSlide(current+1);start()}if(e.key===' '){e.preventDefault();paused?start():stop()}});
+   carousel.tabIndex=0;goSlide(0);start();
+ }
+ const modal=root.querySelector('#historyModal'),modalContent=root.querySelector('#modalContent');root.querySelectorAll('[data-modal]').forEach(b=>b.addEventListener('click',()=>{const id=b.dataset.modal;const data={
+ m1945:{kicker:'Giai đoạn 01 · 1945',title:'Cách mạng tháng Tám 1945',lead:'',context:'<b>Thế giới:</b> Đầu tháng 8/1945, phát xít Nhật đầu hàng Đồng minh, quân Nhật ở Đông Dương hoang mang, dao động.<br><b>Trong nước:</b> Đảng nhận định thời cơ “ngàn năm có một” đã chín muồi, quyết định phát động Tổng khởi nghĩa giành chính quyền trước khi quân Đồng minh vào Đông Dương.',events:['14–18/8: khởi nghĩa giành chính quyền sớm nhất ở 4 tỉnh: Bắc Giang, Hải Dương, Hà Tĩnh, Quảng Nam.','19/8: khởi nghĩa giành thắng lợi tại Thủ đô Hà Nội.','23/8 và 25/8: giành chính quyền thắng lợi ở Huế và Sài Gòn.','30/8: vua Bảo Đại thoái vị, xóa bỏ hoàn toàn chế độ phong kiến.','02/09: Chủ tịch Hồ Chí Minh đọc Tuyên ngôn Độc lập tại Quảng trường Ba Đình.'],meaning:'Đối với dân tộc: đập tan ách thực dân – phát xít và phong kiến; đưa nhân dân lên làm chủ đất nước, mở ra kỷ nguyên độc lập, tự do. Đối với quốc tế: cổ vũ mạnh mẽ phong trào giải phóng dân tộc của các nước bị áp bức trên thế giới.',source:'Báo Nhân Dân; Cổng thông tin chuyên đề Cách mạng Tháng Tám 1945.',links:[['Báo Nhân Dân – Cách mạng Tháng Tám 1945','https://special.nhandan.vn/cachmangthangtam1945/index.html']]},
+ m1954:{kicker:'Giai đoạn 02 · 1945–1954',title:'Kháng chiến chống thực dân Pháp',lead:'',context:'Thực dân Pháp bội ước: liên tục vi phạm Hiệp định Sơ bộ (6/3) và Tạm ước (14/9), mở rộng xâm lược ra Bắc Bộ và gửi thư uy hiếp Hà Nội. Quyết tâm của ta: Đảng và Chủ tịch Hồ Chí Minh phát động Toàn quốc kháng chiến nhằm bảo vệ nền độc lập vừa giành được.',events:['23/09/1945: nhân dân Nam Bộ đứng lên kháng chiến chống thực dân Pháp xâm lược trở lại.','19/12/1946: Chủ tịch Hồ Chí Minh ra “Lời kêu gọi Toàn quốc kháng chiến”.','Thu – Đông 1947: Chiến dịch Việt Bắc, đánh bại chiến lược “đánh nhanh thắng nhanh” của Pháp, bảo vệ an toàn cơ quan đầu não.','Thu – Đông 1950: Chiến dịch Biên giới, khai thông đường biên giới Việt – Trung, giúp ta giành thế chủ động trên chiến trường chính Bắc Bộ.','13/3 – 07/5/1954: Chiến dịch Điện Biên Phủ toàn thắng, đập tan tập đoàn cứ điểm mạnh nhất của Pháp.','21/07/1954: ký kết Hiệp định Genève, chấm dứt chiến tranh, lập lại hòa bình ở Đông Dương.'],meaning:'Chấm dứt hoàn toàn ách thống trị của thực dân Pháp; giải phóng hoàn toàn miền Bắc, tạo cơ sở giải phóng miền Nam, thống nhất đất nước. Góp phần làm tan rã hệ thống thuộc địa của chủ nghĩa đế quốc; cổ vũ mạnh mẽ phong trào giải phóng dân tộc trên thế giới.',source:'Cổng Thông tin điện tử Chính phủ; Báo Nhân Dân.',links:[['Cổng Thông tin điện tử Chính phủ – Kháng chiến và kiến quốc 1945–1954','https://baochinhphu.vn/'],['Báo Nhân Dân – Tổng quan cuộc kháng chiến chống thực dân Pháp 1945–1954','https://nhandan.vn/']]},
+ m1975:{kicker:'Giai đoạn 03 · 1954–1975',title:'Kháng chiến chống Mỹ, cứu nước',lead:'',context:'Âm mưu của Mỹ: biến miền Nam Việt Nam thành thuộc địa kiểu mới và căn cứ quân sự. Đất nước: tạm thời bị chia cắt làm hai miền với hai chế độ chính trị khác nhau sau Hiệp định Genève (1954). Nhiệm vụ chiến lược: xây dựng chủ nghĩa xã hội ở miền Bắc (hậu phương lớn), đồng thời tiến hành cách mạng dân tộc dân chủ nhân dân ở miền Nam (tiền tuyến lớn).',events:['1954: Hiệp định Genève, đất nước tạm thời chia cắt.','1959–1960: phong trào Đồng khởi, cách mạng miền Nam chuyển sang thế tiến công.','1968: Tổng tiến công và nổi dậy Mậu Thân, Mỹ chấp nhận đàm phán Paris.','1972: “Điện Biên Phủ trên không”, tạo bước ngoặt trên mặt trận ngoại giao.','1973: Hiệp định Paris, Mỹ rút quân khỏi Việt Nam.','1975: Đại thắng mùa Xuân, giải phóng miền Nam, thống nhất đất nước.'],meaning:'Thắng lợi năm 1975 chấm dứt chiến tranh, mở ra thời kỳ cả nước độc lập, thống nhất và đi vào xây dựng, bảo vệ Tổ quốc trong điều kiện mới.',source:'Báo Nhân Dân.',links:[['Báo Nhân Dân – Kháng chiến chống Mỹ, cứu nước: thắng lợi vĩ đại của Việt Nam','https://special.nhandan.vn/khang_chien_chong_my_cuu_nuoc_thang_loi_vi_dai_cua_Viet_Nam/index.html']]},
+ m1986:{kicker:'Giai đoạn 04 · 1975–1986',title:'Thời kỳ sau thống nhất',lead:'',context:'Đất nước được độc lập, hoàn thành thống nhất về mặt nhà nước (1976), bước vào thời kỳ quá độ lên chủ nghĩa xã hội. Đất nước rơi vào tình trạng khủng hoảng kinh tế – xã hội nghiêm trọng do hậu quả chiến tranh và chính sách cấm vận. Việt Nam đồng thời đương đầu với cuộc chiến đấu bảo vệ chủ quyền ở biên giới Tây Nam và biên giới phía Bắc.',events:['25/04/1976: Tổng tuyển cử bầu Quốc hội chung, hoàn thành thống nhất đất nước về mặt nhà nước.','1978–1979: chiến đấu bảo vệ biên giới Tây Nam và giúp Campuchia lật đổ chế độ Khmer Đỏ.','17/02/1979: chiến đấu bảo vệ chủ quyền lãnh thổ ở biên giới phía Bắc.','1985: cuộc điều chỉnh Giá – Lương – Tiền, một bước thử nghiệm thực tiễn trước Đổi mới.'],meaning:'Bảo vệ vững chắc độc lập, chủ quyền và toàn vẹn lãnh thổ quốc gia. Bài học thực tiễn từ giai đoạn này là tiền đề trực tiếp dẫn đến quyết định Đổi mới năm 1986.',source:'Báo Nhân Dân.',links:[['Báo Nhân Dân – Kháng chiến chống Mỹ, cứu nước: thắng lợi vĩ đại của Việt Nam','https://special.nhandan.vn/khang_chien_chong_my_cuu_nuoc_thang_loi_vi_dai_cua_Viet_Nam/index.html']]},
+ m2000:{kicker:'Giai đoạn 05 · 1986–2000',title:'Đổi mới và hội nhập khu vực, quốc tế',lead:'Từ năm 1986, công cuộc Đổi mới từng bước tạo ra những chuyển biến về kinh tế và đời sống xã hội, đồng thời mở rộng quan hệ đối ngoại. Việt Nam ngày càng tham gia sâu hơn vào các cơ chế hợp tác khu vực và quốc tế.',context:'Ngày 28/7/1995, Việt Nam gia nhập ASEAN, trở thành thành viên thứ bảy của tổ chức. Ngày 13/7/2000, Việt Nam và Hoa Kỳ ký Hiệp định Thương mại song phương, đánh dấu một bước phát triển quan trọng trong quan hệ kinh tế giữa hai nước.',events:['1986: Đại hội VI và đường lối Đổi mới.','28/7/1995: gia nhập ASEAN.','13/7/2000: ký Hiệp định Thương mại Việt Nam – Hoa Kỳ.'],meaning:'Việc mở rộng quan hệ đối ngoại và hội nhập kinh tế góp phần tạo môi trường thuận lợi cho phát triển, đồng thời đặt Việt Nam trước yêu cầu nâng cao năng lực cạnh tranh và thích ứng với nền kinh tế khu vực, thế giới.',source:'ASEAN; U.S. Trade Representative (USTR); Báo Điện tử Chính phủ.',links:[['ASEAN – các dấu mốc','https://asean.org/asean-milestone/'],['USTR – Hiệp định Thương mại Việt Nam – Hoa Kỳ','https://ustr.gov/archive/assets/Document_Library/Reports_Publications/2002/2002_Trade_Policy_Agenda/asset_upload_file416_6345.pdf']]},
+ mnow:{kicker:'Giai đoạn 06 · 2000–nay',title:'Việt Nam trong thế kỷ XXI',lead:'Bước sang thế kỷ XXI, hội nhập quốc tế tiếp tục được đẩy mạnh. Việt Nam tham gia ngày càng sâu vào các tổ chức và cơ chế hợp tác khu vực, toàn cầu, đồng thời tập trung phát triển kinh tế, nâng cao đời sống và xây dựng vị thế quốc tế.',context:'Ngày 11/1/2007, Việt Nam chính thức trở thành thành viên thứ 150 của WTO. Đây là một dấu mốc lớn trong tiến trình hội nhập kinh tế quốc tế. Cùng với ASEAN, WTO và nhiều khuôn khổ hợp tác khác, Việt Nam mở rộng thị trường, tăng cường hợp tác và thích ứng với môi trường kinh tế toàn cầu.',events:['11/1/2007: Việt Nam gia nhập WTO, thành viên thứ 150.','2015: Cộng đồng ASEAN chính thức hình thành.','Thế kỷ XXI: tiếp tục hội nhập, phát triển và nâng cao vị thế quốc tế.'],meaning:'Giai đoạn mới đặt ra đồng thời cơ hội và thách thức: mở rộng hợp tác, thị trường và nguồn lực, nhưng cũng đòi hỏi năng lực cạnh tranh, chất lượng nguồn nhân lực và khả năng thích ứng cao hơn.',source:'WTO; ASEAN.',links:[['WTO – Việt Nam gia nhập WTO','https://www.wto.org/english/thewto_e/acc_e/a1_vietnam_e.htm'],['ASEAN – giới thiệu','https://asean.org/about-asean/']]}
+};const d=data[id];modalContent.innerHTML='<div class="modal-kicker">'+d.kicker+'</div><h3>'+d.title+'</h3><div class="detail-panel" style="margin-top:14px"><h4>1. Bối cảnh</h4><p>'+d.lead+'</p><p>'+d.context+'</p></div><div class="detail-panel" style="margin-top:12px"><h4>2. Mốc sự kiện chính</h4><ul>'+d.events.map(x=>'<li>'+x+'</li>').join('')+'</ul></div><div class="detail-panel" style="margin-top:12px"><h4>3. Ý nghĩa lịch sử</h4><p>'+d.meaning+'</p></div><div class="source-note"><b>Nguồn tham khảo:</b> '+d.source+'<br>'+d.links.map(x=>'<a href="'+x[1]+'" target="_blank" rel="noopener">'+x[0]+' ↗</a>').join(' · ')+'</div>';modal.classList.add('open')}));
+ root.querySelector('#modalClose').addEventListener('click',()=>modal.classList.remove('open'));modal.addEventListener('click',e=>{if(e.target===modal)modal.classList.remove('open')});
+ const qs=[
+ ['Ngày 02/09/1945, Chủ tịch Hồ Chí Minh đọc Tuyên ngôn Độc lập tại đâu?',['Bến Nhà Rồng','Quảng trường Ba Đình','Hang Pác Bó','Phủ Chủ tịch'],1],
+ ['Lời kêu gọi Toàn quốc kháng chiến được ra vào ngày nào?',['19/12/1946','02/09/1945','07/05/1954','27/01/1973'],0],
+ ['Chiến dịch nào kết thúc thắng lợi cuộc kháng chiến chống Pháp năm 1954?',['Việt Bắc','Biên giới','Điện Biên Phủ','Hồ Chí Minh'],2],
+ ['Hiệp định Paris về Việt Nam được ký ngày nào?',['21/07/1954','27/01/1973','30/04/1975','11/01/2007'],1],
+ ['Ngày 30/04/1975 gắn với sự kiện nào?',['Cách mạng tháng Tám','Chiến thắng Điện Biên Phủ','Chiến dịch Hồ Chí Minh toàn thắng','Gia nhập ASEAN'],2],
+ ['Đại hội VI, mở đầu công cuộc Đổi mới, diễn ra năm nào?',['1975','1986','1995','2007'],1],
+ ['Việt Nam gia nhập ASEAN vào năm nào?',['1986','1990','1995','2007'],2],
+ ['Việt Nam chính thức trở thành thành viên WTO ngày nào?',['28/07/1995','13/07/2000','11/01/2007','30/04/1975'],2],
+ ['Mốc 13/07/2000 gắn với sự kiện nào?',['Ký Hiệp định Thương mại Việt Nam – Hoa Kỳ','Gia nhập ASEAN','Gia nhập WTO','Ký Hiệp định Genève'],0],
+ ['Quốc hội khóa VI quyết định tên nước Cộng hòa xã hội chủ nghĩa Việt Nam vào năm nào?',['1946','1954','1976','1986'],2],
+ ['Xe đạp thồ trong chiến dịch Điện Biên Phủ phản ánh nội dung nào?',['Hậu cần và vận tải phục vụ chiến dịch','Đàm phán Paris','Công cuộc Đổi mới','Gia nhập WTO'],0],
+ ['Tuyên ngôn Độc lập năm 1945 tuyên bố điều gì?',['Sự ra đời của nước Việt Nam Dân chủ Cộng hòa','Thành lập ASEAN','Kết thúc chiến tranh năm 1975','Mở đầu Đổi mới'],0],
+ ['Lễ ký Hiệp định Paris gắn với năm nào?',['1954','1968','1973','1986'],2],
+ ['Xe tăng 390 gắn với địa điểm lịch sử nào?',['Quảng trường Ba Đình','Dinh Độc Lập','Hội nghị Genève','Nhà hát Lớn Hà Nội'],1],
+ ['Nghị quyết Đại hội VI gắn với bước ngoặt nào?',['Công cuộc Đổi mới','Cách mạng tháng Tám','Điện Biên Phủ','Gia nhập ASEAN'],0],
+ ['Ý nghĩa nổi bật của Cách mạng tháng Tám năm 1945 là gì?',['Mở ra kỷ nguyên độc lập, tự do','Việt Nam gia nhập WTO','Ký Hiệp định Paris','Thống nhất nhà nước năm 1976'],0],
+ ['Chiến dịch Việt Bắc Thu–Đông 1947 làm thất bại chiến lược nào của Pháp?',['“Đánh nhanh thắng nhanh”','“Chiến tranh cục bộ”','“Việt Nam hóa chiến tranh”','“Chiến tranh đặc biệt”'],0],
+ ['Phong trào Đồng khởi 1959–1960 đưa cách mạng miền Nam chuyển sang thế nào?',['Thế tiến công','Ngừng đấu tranh hoàn toàn','Hội nhập kinh tế','Xây dựng WTO'],0],
+ ['Hiệp định Genève năm 1954 dẫn đến tình trạng nào ở Việt Nam?',['Đất nước tạm thời bị chia cắt hai miền','Thống nhất nhà nước ngay lập tức','Gia nhập ASEAN','Mỹ rút quân theo Hiệp định Paris'],0],
+ ['Mốc nào thể hiện Việt Nam hội nhập vào hệ thống thương mại đa phương toàn cầu?',['Đại hội VI năm 1986','Gia nhập WTO năm 2007','Cách mạng tháng Tám năm 1945','Điện Biên Phủ năm 1954'],1]
+];
+const quizStages=[
+ {name:'CHẶNG 1/4 · HÀO HÙNG TẬP TRẬN',start:0,end:5},
+ {name:'CHẶNG 2/4 · BỨT PHÁ ĐỔI MỚI',start:5,end:10},
+ {name:'CHẶNG 3/4 · GIẢI MÃ TƯ LIỆU',start:10,end:15},
+ {name:'BÀI KIỂM TRA TỔNG HỢP · 5 CÂU',start:15,end:20}
+];
+let qi=0,score=0,answered=false;
+const qCount=root.querySelector('#quizCount'),qEl=root.querySelector('#quizQuestion'),oEl=root.querySelector('#quizOptions'),rEl=root.querySelector('#quizResult'),nEl=root.querySelector('#quizNext'),pEl=root.querySelector('#quizProgress'),reset=root.querySelector('#quizReset'),stageEl=root.querySelector('#quizStage'),certPanel=root.querySelector('#certificatePanel');
+function renderQuiz(){
+ const q=qs[qi],stage=quizStages.find(s=>qi>=s.start&&qi<s.end)||quizStages[3];
+ answered=false;qCount.textContent='Câu '+(qi+1)+'/'+qs.length;
+ if(stageEl)stageEl.textContent=stage.name;
+ qEl.textContent=q[0];oEl.innerHTML='';rEl.textContent='';nEl.style.display='none';
+ if(certPanel)certPanel.style.display='none';
+ pEl.style.width=((qi+1)/qs.length*100)+'%';
+ q[1].forEach((ans,i)=>{const b=document.createElement('button');b.className='quiz-option';b.textContent=String.fromCharCode(65+i)+' · '+ans;b.addEventListener('click',()=>{if(answered)return;answered=true;const ok=i===q[2];if(ok)score++;b.classList.add(ok?'correct':'wrong');if(ok){rEl.textContent='✓ Chính xác!'}else{rEl.textContent='✗ Chưa đúng. Đáp án đúng: '+q[1][q[2]];oEl.children[q[2]].classList.add('correct')}nEl.style.display='inline-flex';nEl.textContent=qi===qs.length-1?'Xem kết quả →':([4,9,14].includes(qi)?'Sang chặng tiếp theo →':'Câu tiếp theo →')});oEl.appendChild(b)});
+}
+nEl.addEventListener('click',()=>{if(qi<qs.length-1){qi++;renderQuiz()}else{qCount.textContent='KẾT QUẢ CUỐI CÙNG';qEl.textContent='Hoàn thành 4 chặng thử thách!';oEl.innerHTML='';rEl.textContent='Bạn đạt '+score+'/'+qs.length+' câu đúng.'+(score>=16?' Đạt điều kiện mở giấy chứng nhận.':' Cần đạt ít nhất 16/20 câu đúng để mở giấy chứng nhận.');nEl.style.display='none';if(certPanel&&score>=16)certPanel.style.display='block'}});
+reset.addEventListener('click',()=>{qi=0;score=0;renderQuiz()});
+const printBtn=root.querySelector('#printCertificate');
+printBtn?.addEventListener('click',()=>{
+ const name=root.querySelector('#certName')?.value.trim(),klass=root.querySelector('#certClass')?.value.trim();
+ if(!name||!klass){alert('Vui lòng nhập họ tên và lớp/trường trước khi in giấy chứng nhận.');return}
+ const w=window.open('','_blank','width=900,height=650');
+ if(!w){alert('Trình duyệt đã chặn cửa sổ in. Hãy cho phép cửa sổ bật lên rồi thử lại.');return}
+ w.document.write('<!doctype html><html lang="vi"><head><meta charset="utf-8"><title>Giấy chứng nhận hoàn thành</title><style>body{font-family:Georgia,serif;background:#fffdf8;color:#243027;text-align:center;padding:50px;border:12px double #a61b18;margin:20px}h1{color:#a61b18;font-size:34px}h2{color:#123d2b;font-size:28px}p{font-size:18px;line-height:1.7}.score{font-size:22px;color:#a61b18;font-weight:bold}.note{font:12px Arial;color:#687267;margin-top:35px}</style></head><body><p>DỰ ÁN LỊCH SỬ 12A9 · TRƯỜNG THPT KẾ SÁCH</p><h1>GIẤY CHỨNG NHẬN HOÀN THÀNH</h1><h2>ĐẤU TRƯỜNG LỊCH SỬ – CHINH PHỤC CÁC CỘT MỐC</h2><p>Chứng nhận bạn</p><h2>'+name.replace(/[&<>"]/g,'')+'</h2><p>Lớp / Trường: '+klass.replace(/[&<>"]/g,'')+'</p><p>đã hoàn thành thử thách lịch sử trực tuyến với kết quả</p><p class="score">'+score+'/20 câu đúng</p><p>Chủ đề: Lịch sử Việt Nam từ năm 1945 đến nay</p><p class="note">Giấy chứng nhận học tập do website dự án tạo để ghi nhận kết quả tự luyện tập; không phải văn bằng/chứng chỉ chính thức.</p><script>window.onload=()=>window.print()<\/script></body></html>');
+ w.document.close();
+});
+renderQuiz();
+
+ /* Interactive cards, reveal animation, counters and click-to-explore */
+ const interactiveCards=root.querySelectorAll('.home-card,.stage-card,.event-card,.museum-card,.info-card,.person,.stat');
+ const reduceMotion=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+ interactiveCards.forEach((card)=>{
+   card.classList.add('card-reveal');
+   card.addEventListener('pointermove',(e)=>{
+     if(reduceMotion || e.pointerType!=='mouse') return;
+     const r=card.getBoundingClientRect(), x=(e.clientX-r.left)/r.width, y=(e.clientY-r.top)/r.height;
+     card.style.setProperty('--mx',(x*100)+'%'); card.style.setProperty('--my',(y*100)+'%');
+     card.classList.add('interactive-glow');
+     if(card.matches('.home-card,.event-card,.museum-card,.person')) card.style.transform=`perspective(900px) rotateX(${(0.5-y)*3}deg) rotateY(${(x-0.5)*4}deg) translateY(-4px)`;
+   });
+   card.addEventListener('pointerleave',()=>{card.classList.remove('interactive-glow');card.style.transform='';});
+   card.addEventListener('click',(e)=>{
+     if(reduceMotion) return;
+     const target=e.target.closest('button,a');
+     if(target && !card.matches('.event-card,.museum-card')) return;
+     const rect=card.getBoundingClientRect(), size=Math.max(rect.width,rect.height)*.22;
+     const ripple=document.createElement('span'); ripple.className='ripple dark'; ripple.style.width=size+'px'; ripple.style.height=size+'px';
+     ripple.style.left=(e.clientX-rect.left-size/2)+'px'; ripple.style.top=(e.clientY-rect.top-size/2)+'px'; card.appendChild(ripple); setTimeout(()=>ripple.remove(),600);
+   });
+ });
+ const revealItems=[...root.querySelectorAll('.card-reveal')];
+ if('IntersectionObserver' in window && !reduceMotion){
+   const io=new IntersectionObserver(entries=>entries.forEach(en=>{if(en.isIntersecting){en.target.classList.add('revealed');io.unobserve(en.target)}}),{threshold:.12});
+   revealItems.forEach((el,i)=>{el.style.transitionDelay=Math.min(i%4*55,165)+'ms';io.observe(el)});
+ }else revealItems.forEach(el=>el.classList.add('revealed'));
+ // Timeline points jump to the corresponding stage card.
+ const points=[...root.querySelectorAll('.timeline-points .point')], stages=[...root.querySelectorAll('.stage-card')];
+ points.forEach((point,i)=>{point.setAttribute('role','button');point.setAttribute('tabindex','0');const jump=()=>{const target=stages[Math.min(i,stages.length-1)];if(!target)return;target.scrollIntoView({behavior:reduceMotion?'auto':'smooth',block:'center'});target.classList.remove('active-card');void target.offsetWidth;target.classList.add('active-card');setTimeout(()=>target.classList.remove('active-card'),1200)};point.addEventListener('click',jump);point.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();jump()}})});
+ // Event cards open an expanded mini dossier.
+ root.querySelectorAll('.event-card').forEach(card=>{
+   card.setAttribute('tabindex','0');card.setAttribute('role','button');
+   const openEvent=()=>{
+     const year=card.querySelector('.year')?.textContent.trim()||'';
+     const tag=card.querySelector('.tag')?.textContent.trim()||'';
+     const title=card.querySelector('h4')?.textContent.trim()||'';
+     const text=card.querySelector('p')?.textContent.trim()||'';
+     const why=card.querySelector('.why')?.textContent.trim()||'';
+     modalContent.innerHTML='<div class="modal-kicker">SỰ KIỆN · '+year+'</div><h3>'+title+'</h3><div class="pillrow"><span class="pill">'+tag+'</span></div><p class="modal-lead">'+text+'</p><div class="detail-panel"><h4>Vì sao đáng nhớ?</h4><p>'+why.replace(/^Vì sao\s*:\s*/i,'')+'</p></div><div class="source-note">Gợi ý: đối chiếu thêm với nguồn tư liệu được liên kết trên trang <b>Sự kiện lịch sử</b> để đọc sâu hơn.</div>';
+     modal.classList.add('open');
+   };
+   card.addEventListener('click',e=>{if(e.target.closest('a'))return;openEvent()});card.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();openEvent()}});
+ });
+ // Museum cards open an interactive multi-image gallery.
+ const museumCards=[...root.querySelectorAll('.museum-card')];
+ const esc=(v)=>String(v??'').replace(/[&<>"']/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
+ museumCards.forEach((card,index)=>{
+   card.setAttribute('tabindex','0');card.setAttribute('role','button');
+   const openMuseum=()=>{
+     const getData=(c)=>({
+       img:c.querySelector('img')?.src||'',
+       alt:c.querySelector('img')?.alt||'',
+       year:c.querySelector('.year')?.textContent.trim()||'',
+       title:c.querySelector('h4')?.textContent.trim()||'',
+       desc:c.querySelector('p')?.textContent.trim()||'',
+       credit:c.querySelector('.credit')?.textContent.trim()||'',
+       src:c.querySelector('.source-link')?.href||'#'
+     });
+     // Curated event-specific image sets: clicking a card opens several images ABOUT THAT EVENT.
+     const file=(name)=>'https://commons.wikimedia.org/wiki/Special:FilePath/'+encodeURIComponent(name);
+     const commons=(name)=>'https://commons.wikimedia.org/wiki/File:'+encodeURIComponent(name).replace(/%2F/g,'/');
+     const current=getData(card);
+     const sets=[
+       [
+         {img:current.img,alt:current.alt,year:'1945 · Cách mạng tháng Tám',title:'Mít tinh tại Nhà hát Lớn Hà Nội',desc:'Không khí quần chúng chào mừng thắng lợi của Cách mạng tháng Tám tại Hà Nội.',credit:'Wikimedia Commons · tư liệu lịch sử',src:current.src},
+         {img:file('Chào mừng Cách mạng Tháng Tám năm 1945 thành công tại Nhà hát Lớn Hà Nội.jpg'),alt:'Chào mừng Cách mạng tháng Tám tại Nhà hát Lớn',year:'1945',title:'Chào mừng thắng lợi Cách mạng tháng Tám',desc:'Một góc tư liệu khác về không khí quần chúng tại Nhà hát Lớn Hà Nội.',credit:'Wikimedia Commons',src:commons('Chào mừng Cách mạng Tháng Tám năm 1945 thành công tại Nhà hát Lớn Hà Nội.jpg')},
+         {img:file('Quân lệnh số 1 của Ủy ban Khởi nghĩa toàn quốc, ngày 13-08-1945.jpg'),alt:'Quân lệnh số 1 ngày 13/8/1945',year:'13/08/1945',title:'Quân lệnh số 1 của Ủy ban Khởi nghĩa',desc:'Văn bản gắn với quyết định phát động Tổng khởi nghĩa trên phạm vi cả nước.',credit:'Wikimedia Commons · Bảo tàng Lịch sử Quốc gia',src:commons('Quân lệnh số 1 của Ủy ban Khởi nghĩa toàn quốc, ngày 13-08-1945.jpg')},
+         {img:file('Ngày 28-08-1945, Đoàn giải phóng quân ở Việt Bắc về duyệt binh ở quảng trường Nhà hát Lớn - Hà Nội.jpg'),alt:'Đoàn giải phóng quân tại Nhà hát Lớn 28/8/1945',year:'28/08/1945',title:'Đoàn giải phóng quân về Hà Nội',desc:'Hình ảnh đoàn giải phóng quân tại khu vực Nhà hát Lớn trong những ngày chính quyền cách mạng được thiết lập.',credit:'Wikimedia Commons',src:commons('Ngày 28-08-1945, Đoàn giải phóng quân ở Việt Bắc về duyệt binh ở quảng trường Nhà hát Lớn - Hà Nội.jpg')}
+       ],
+       [
+         {img:current.img,alt:current.alt,year:'02/09/1945',title:'Quảng trường Ba Đình',desc:'Không gian lịch sử nơi Chủ tịch Hồ Chí Minh đọc Tuyên ngôn Độc lập.',credit:'Wikimedia Commons',src:current.src},
+         {img:file('Toàn cảnh lễ đài tại Quảng trường Ba Đình - Hà Nội, ngày 02-09-1945.jpg'),alt:'Lễ đài Ba Đình',year:'02/09/1945',title:'Toàn cảnh lễ đài Ba Đình',desc:'Một góc nhìn rộng về lễ đài và quảng trường trong ngày Tuyên ngôn Độc lập.',credit:'Cục Văn thư và Lưu trữ Nhà nước · Wikimedia Commons',src:commons('Toàn cảnh lễ đài tại Quảng trường Ba Đình - Hà Nội, ngày 02-09-1945.jpg')},
+         {img:file('1945 Vietnam Independence or Death.png'),alt:'Biểu ngữ Độc lập hay là Chết năm 1945',year:'1945',title:'Khẩu hiệu của thời điểm giành độc lập',desc:'Tư liệu hình ảnh phản ánh không khí đấu tranh và khát vọng độc lập trong năm 1945.',credit:'Wikimedia Commons',src:commons('1945 Vietnam Independence or Death.png')},
+         {img:file('Lễ mít tinh thành lập Chính quyền cách mạng tỉnh Thái Nguyên ngày 20-8-1945.png'),alt:'Lễ mít tinh thành lập chính quyền cách mạng ở Thái Nguyên',year:'20/08/1945',title:'Chính quyền cách mạng ở Thái Nguyên',desc:'Tư liệu về việc thành lập chính quyền cách mạng tại một địa phương trong Tổng khởi nghĩa.',credit:'Wikimedia Commons',src:commons('Lễ mít tinh thành lập Chính quyền cách mạng tỉnh Thái Nguyên ngày 20-8-1945.png')}
+       ],
+       [
+         {img:current.img,alt:current.alt,year:'1945',title:'Chân dung Hồ Chí Minh',desc:'Chân dung Chủ tịch Hồ Chí Minh từ tư liệu xuất bản năm 1945.',credit:'Gallica · Wikimedia Commons',src:current.src},
+         {img:file('1945 Archimedes Patti Vo Nguyen Giap talk.png'),alt:'Hồ Chí Minh và Võ Nguyên Giáp năm 1945',year:'1945',title:'Trao đổi với Võ Nguyên Giáp',desc:'Tư liệu hình ảnh về những nhân vật chủ chốt trong thời điểm lịch sử 1945.',credit:'Wikimedia Commons',src:commons('1945 Archimedes Patti Vo Nguyen Giap talk.png')},
+         {img:file('1945 Aug Archimedes Patti, Vo Nguyen Giap.png'),alt:'Archimedes Patti và Võ Nguyên Giáp',year:'1945',title:'Gặp gỡ và trao đổi năm 1945',desc:'Một hình ảnh tư liệu khác về bối cảnh ngoại giao và quân sự năm 1945.',credit:'Wikimedia Commons',src:commons('1945 Aug Archimedes Patti, Vo Nguyen Giap.png')},
+         {img:file('Patti Giap US flag 1945 Aug 26.png'),alt:'Archimedes Patti và Võ Nguyên Giáp ngày 26/8/1945',year:'26/08/1945',title:'Tư liệu Patti – Giáp',desc:'Hình ảnh gắn với những cuộc tiếp xúc và trao đổi trong thời điểm chính quyền cách mạng vừa ra đời.',credit:'Wikimedia Commons',src:commons('Patti Giap US flag 1945 Aug 26.png')}
+       ],
+       [
+         {img:current.img,alt:current.alt,year:'1945–1946',title:'Hà Nội trong những ngày đầu kháng chiến',desc:'Tư liệu gợi lại không khí chuẩn bị bảo vệ chính quyền cách mạng và thành phố.',credit:'Wikimedia Commons',src:current.src},
+         {img:file('26-8-1945 Vo Nguyen Giap reviewing the People\'s Army.jpg'),alt:'Võ Nguyên Giáp duyệt lực lượng ngày 26/8/1945',year:'26/08/1945',title:'Duyệt lực lượng tại Hà Nội',desc:'Hình ảnh Võ Nguyên Giáp trong những ngày đầu của chính quyền cách mạng.',credit:'Wikimedia Commons',src:commons('26-8-1945 Vo Nguyen Giap reviewing the People\'s Army.jpg')},
+         {img:file('Anti france 1945.jpg'),alt:'Tư liệu chống Pháp năm 1945',year:'1945',title:'Không khí đấu tranh năm 1945',desc:'Một tư liệu hình ảnh phản ánh bối cảnh chính trị – xã hội tại Việt Nam năm 1945.',credit:'Wikimedia Commons',src:commons('Anti france 1945.jpg')},
+         {img:file('Rencontre au Grand Opéra de Hanoï le 17 août 1945.jpg'),alt:'Cuộc gặp tại Nhà hát Lớn Hà Nội ngày 17/8/1945',year:'17/08/1945',title:'Nhà hát Lớn trong những ngày chuyển giao',desc:'Tư liệu về một cuộc gặp tại Nhà hát Lớn ngay trước cao trào giành chính quyền.',credit:'Wikimedia Commons',src:commons('Rencontre au Grand Opéra de Hanoï le 17 août 1945.jpg')}
+       ],
+       [
+         {img:current.img,alt:current.alt,year:'07/05/1954',title:'Cờ Quyết chiến – Quyết thắng',desc:'Khoảnh khắc biểu tượng của chiến thắng Điện Biên Phủ.',credit:'Wikimedia Commons',src:current.src},
+         {img:file('Bataille de Dien Bien Phu.jpg'),alt:'Trận Điện Biên Phủ',year:'1954',title:'Toàn cảnh chiến trường Điện Biên Phủ',desc:'Tư liệu hình ảnh về chiến trường trong chiến dịch Điện Biên Phủ.',credit:'Wikimedia Commons',src:commons('Bataille de Dien Bien Phu.jpg')},
+         {img:file('Contemporary Photo of Vietnminh Storming across Muong Thanh Bridge (1954) - Dien Bien Phu Victory Museum - Dien Bien Phu - Vietnam (48159225792).jpg'),alt:'Bộ đội tiến qua cầu Mường Thanh',year:'1954',title:'Tiến công qua cầu Mường Thanh',desc:'Ảnh trưng bày tại Bảo tàng Chiến thắng Điện Biên Phủ, tái hiện hình ảnh bộ đội tiến công.',credit:'Wikimedia Commons · Dien Bien Phu Victory Museum',src:commons('Contemporary Photo of Vietnminh Storming across Muong Thanh Bridge (1954) - Dien Bien Phu Victory Museum - Dien Bien Phu - Vietnam (48159225792).jpg')},
+         {img:file('Dien Bien Phu 1954 French prisoners.jpg'),alt:'Tù binh Pháp tại Điện Biên Phủ',year:'1954',title:'Tù binh Pháp sau chiến dịch',desc:'Tư liệu về kết quả chiến dịch và những ngày cuối của quân Pháp tại Điện Biên Phủ.',credit:'Wikimedia Commons',src:commons('Dien Bien Phu 1954 French prisoners.jpg')}
+       ],
+       [
+         {img:current.img,alt:current.alt,year:'1954',title:'Hội nghị Genève',desc:'Toàn cảnh Hội nghị Genève về Đông Dương.',credit:'US Army Photograph · Wikimedia Commons',src:current.src},
+         {img:file('1stIndochinaWar003.jpg'),alt:'Phiên họp cuối Hội nghị Genève',year:'21/07/1954',title:'Phiên họp toàn thể tại Genève',desc:'Hình ảnh phiên họp cuối về Đông Dương tại Palais des Nations.',credit:'Wikimedia Commons · Public Domain tại Hoa Kỳ',src:commons('1stIndochinaWar003.jpg')},
+         {img:file('Ap540721012 geneva conference 1954.jpg'),alt:'Phiên họp Genève 21/7/1954',year:'21/07/1954',title:'Phiên họp sau khi ký thỏa thuận đình chiến',desc:'Góc nhìn toàn thể phiên họp tại Genève sau khi ký các thỏa thuận đình chiến.',credit:'Wikimedia Commons',src:commons('Ap540721012 geneva conference 1954.jpg')},
+         {img:file('Phái đoàn Việt Nam tại Hội nghị Genève (1954).jpg'),alt:'Phái đoàn Việt Nam tại Genève',year:'1954',title:'Phái đoàn Việt Nam tại Genève',desc:'Hình ảnh phái đoàn Việt Nam Dân chủ Cộng hòa tại Hội nghị Genève.',credit:'Wikimedia Commons',src:commons('Phái đoàn Việt Nam tại Hội nghị Genève (1954).jpg')}
+       ],
+       [
+         {img:current.img,alt:current.alt,year:'30/04/1975',title:'Dinh Độc Lập',desc:'Địa điểm gắn với thời khắc kết thúc chiến tranh và mở ra thời kỳ thống nhất.',credit:'Wikimedia Commons',src:current.src},
+         {img:file('843 T-54B tank - one of two that breached the Independence Palace 30th April 1975.jpg'),alt:'Xe tăng 843 tại Dinh Độc Lập',year:'30/04/1975',title:'Xe tăng 843',desc:'Xe tăng T-54B số hiệu 843 là một trong những phương tiện tiến vào Dinh Độc Lập ngày 30/4/1975.',credit:'Wikimedia Commons · CC BY 2.0',src:commons('843 T-54B tank - one of two that breached the Independence Palace 30th April 1975.jpg')},
+         {img:file('Surrender letter of Duong Van Minh.JPG'),alt:'Thư đầu hàng của Dương Văn Minh',year:'30/04/1975',title:'Văn bản đầu hàng',desc:'Tư liệu văn bản gắn với thời khắc chính quyền Sài Gòn tuyên bố đầu hàng ngày 30/4/1975.',credit:'Wikimedia Commons',src:commons('Surrender letter of Duong Van Minh.JPG')},
+         {img:file('Pentraĵo bildiganta venkon de Nord-Vjetnamio en la Vjetnama milito (Muzeo de Ho-Ĉi-Min-urbo).jpg'),alt:'Tranh tái hiện chiến thắng năm 1975',year:'1975',title:'Tư liệu tái hiện chiến thắng',desc:'Một tác phẩm trưng bày tại Bảo tàng Thành phố Hồ Chí Minh về kết thúc chiến tranh năm 1975.',credit:'Wikimedia Commons',src:commons('Pentraĵo bildiganta venkon de Nord-Vjetnamio en la Vjetnama milito (Muzeo de Ho-Ĉi-Min-urbo).jpg')}
+       ],
+       [
+         {img:current.img,alt:current.alt,year:'1986',title:'Nguyễn Văn Linh',desc:'Hình ảnh Nguyễn Văn Linh trong năm 1986, gắn với bước ngoặt Đổi mới.',credit:'Wikimedia Commons',src:current.src},
+         {img:file('Nguyen Van Linh 1946.jpg'),alt:'Nguyễn Văn Linh năm 1946',year:'1946',title:'Nguyễn Văn Linh thời kỳ đầu',desc:'Một hình ảnh tư liệu cho thấy Nguyễn Văn Linh ở giai đoạn trước Đổi mới.',credit:'Wikimedia Commons',src:commons('Nguyen Van Linh 1946.jpg')},
+         {img:file('Nguyenvanlinh-twcucmiennam.png'),alt:'Nguyễn Văn Linh',year:'1980s',title:'Nguyễn Văn Linh trong hoạt động lãnh đạo',desc:'Tư liệu hình ảnh từ giai đoạn ông hoạt động lãnh đạo ở Việt Nam.',credit:'Wikimedia Commons',src:commons('Nguyenvanlinh-twcucmiennam.png')},
+         {img:file('Tám Lê Thanh và Nguyễn Văn Linh (cropped).jpg'),alt:'Nguyễn Văn Linh và Lê Thanh',year:'Tư liệu',title:'Nguyễn Văn Linh và đồng chí',desc:'Một tư liệu hình ảnh khác trong bộ sưu tập về Nguyễn Văn Linh.',credit:'Wikimedia Commons',src:commons('Tám Lê Thanh và Nguyễn Văn Linh (cropped).jpg')}
+       ],
+       [
+         {img:current.img,alt:current.alt,year:'1995',title:'Việt Nam trong ASEAN',desc:'Hình ảnh cờ ASEAN và Việt Nam, gợi nhớ bước ngoặt hội nhập khu vực năm 1995.',credit:'Wikimedia Commons',src:current.src},
+         {img:file('ASEAN Flags for ATF 2026.jpg'),alt:'Các quốc kỳ ASEAN tại ATF',year:'ASEAN',title:'Các quốc kỳ ASEAN',desc:'Hình ảnh hiện đại về các quốc kỳ của các nước thành viên ASEAN.',credit:'Wikimedia Commons',src:commons('ASEAN Flags for ATF 2026.jpg')},
+         {img:file('ASEAN Flag (1994).svg'),alt:'Cờ ASEAN năm 1994',year:'1994',title:'Cờ ASEAN trước mốc Việt Nam gia nhập',desc:'Biểu tượng ASEAN ở giai đoạn ngay trước khi Việt Nam trở thành thành viên thứ bảy năm 1995.',credit:'Wikimedia Commons',src:commons('ASEAN Flag (1994).svg')},
+         {img:file('1st ASEAN Summit.jpg'),alt:'Hội nghị cấp cao ASEAN lần thứ nhất',year:'1976',title:'Hội nghị cấp cao ASEAN lần thứ nhất',desc:'Tư liệu về giai đoạn hình thành và củng cố hợp tác ASEAN trước khi Việt Nam gia nhập.',credit:'Wikimedia Commons · Arsip Nasional RI',src:commons('1st ASEAN Summit.jpg')}
+       ],
+       [
+         {img:current.img,alt:current.alt,year:'2000 — nay',title:'Quốc kỳ Việt Nam trong thời kỳ hội nhập',desc:'Biểu tượng quốc gia xuất hiện trong nhiều hoạt động đối ngoại và hội nhập quốc tế.',credit:'Wikimedia Commons',src:current.src},
+         {img:file('ASEAN Flag.png'),alt:'Cờ ASEAN',year:'ASEAN',title:'Biểu tượng ASEAN',desc:'Tư liệu về biểu tượng của tổ chức khu vực mà Việt Nam tham gia từ năm 1995.',credit:'Wikimedia Commons',src:commons('ASEAN Flag.png')},
+         {img:file('The ASEAN Secretariat Buildings.jpg'),alt:'Tòa nhà Ban Thư ký ASEAN',year:'ASEAN',title:'Ban Thư ký ASEAN',desc:'Hình ảnh trụ sở Ban Thư ký ASEAN, biểu tượng cho hợp tác khu vực trong thời kỳ hội nhập sâu.',credit:'Wikimedia Commons',src:commons('The ASEAN Secretariat Buildings.jpg')},
+         {img:file('WTO @ Parc William Rappard @ Genève (50632005518).jpg'),alt:'Trụ sở WTO tại Genève',year:'WTO',title:'Trụ sở Tổ chức Thương mại Thế giới',desc:'Hình ảnh trụ sở WTO tại Genève, gắn với tiến trình hội nhập kinh tế quốc tế của Việt Nam sau khi gia nhập WTO năm 2007.',credit:'Wikimedia Commons · CC BY 2.0',src:commons('WTO @ Parc William Rappard @ Genève (50632005518).jpg')}
+       ]
+     ];
+     const picks=sets[index]||[current];
+     let active=0;
+     modalContent.innerHTML='<div class="modal-kicker">BẢO TÀNG SỐ · BỘ SƯU TẬP TƯ LIỆU</div><h3>'+esc(picks[0].title)+'</h3>'+
+       '<p class="gallery-hint">Bấm vào ảnh nhỏ để khám phá thêm tư liệu liên quan · Có thể dùng phím ← → để chuyển ảnh.</p>'+
+       '<div class="museum-gallery"><div class="gallery-thumbs" aria-label="Các hình ảnh trong bộ sưu tập">'+
+       picks.map((d,i)=>'<button type="button" class="gallery-thumb '+(i===0?'active':'')+'" data-gallery-index="'+i+'" aria-label="Mở hình '+(i+1)+'"><img src="'+esc(d.img)+'" alt="'+esc(d.alt)+'"></button>').join('')+
+       '</div><div class="museum-gallery-main"><img id="galleryMainImage" src="'+esc(picks[0].img)+'" alt="'+esc(picks[0].alt)+'"><div class="gallery-caption"><div><strong id="galleryTitle">'+esc(picks[0].title)+'</strong><span id="galleryMeta">'+esc(picks[0].year)+'</span></div><span class="gallery-count" id="galleryCount">1 / '+picks.length+'</span></div></div></div>'+
+       '<p class="modal-lead" id="galleryDesc">'+esc(picks[0].desc)+'</p>'+
+       '<div class="source-note" id="gallerySource">'+esc(picks[0].credit)+'<br><a href="'+esc(picks[0].src)+'" target="_blank" rel="noopener">Mở trang nguồn ảnh ↗</a></div>';
+     modal.classList.add('open');
+     const main=modalContent.querySelector('#galleryMainImage'), titleEl=modalContent.querySelector('#galleryTitle'), metaEl=modalContent.querySelector('#galleryMeta'), descEl=modalContent.querySelector('#galleryDesc'), sourceEl=modalContent.querySelector('#gallerySource'), countEl=modalContent.querySelector('#galleryCount'), thumbs=[...modalContent.querySelectorAll('.gallery-thumb')];
+     const show=(n)=>{
+       active=(n+picks.length)%picks.length; const d=picks[active];
+       main.classList.add('gallery-swap');
+       setTimeout(()=>{
+         main.src=d.img;main.alt=d.alt;titleEl.textContent=d.title;metaEl.textContent=d.year;descEl.textContent=d.desc;
+         sourceEl.innerHTML=esc(d.credit)+'<br><a href="'+esc(d.src)+'" target="_blank" rel="noopener">Mở trang nguồn ảnh ↗</a>';
+         countEl.textContent=(active+1)+' / '+picks.length;
+         thumbs.forEach((t,i)=>t.classList.toggle('active',i===active));
+         main.classList.remove('gallery-swap');
+       },110);
+     };
+     thumbs.forEach((t,i)=>t.addEventListener('click',e=>{e.stopPropagation();show(i)}));
+     modalContent.dataset.galleryActive='1';
+     modalContent._galleryShow=show;
+   };
+   card.addEventListener('click',e=>{
+     if(e.target.closest('a'))return;
+     if(e.target.closest('.museum-more')){e.stopPropagation();openMuseum();return}
+     openMuseum();
+   });
+   card.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();openMuseum()}});
+ });
+ // Keyboard navigation inside an open gallery.
+ document.addEventListener('keydown',e=>{
+   if(!modal.classList.contains('open') || !modalContent._galleryShow || e.target.closest('input,textarea,select')) return;
+   if(e.key==='ArrowRight'){e.preventDefault();e.stopPropagation();const thumbs=modalContent.querySelectorAll('.gallery-thumb');const current=[...thumbs].findIndex(x=>x.classList.contains('active'));modalContent._galleryShow(current+1)}
+   if(e.key==='ArrowLeft'){e.preventDefault();e.stopPropagation();const thumbs=modalContent.querySelectorAll('.gallery-thumb');const current=[...thumbs].findIndex(x=>x.classList.contains('active'));modalContent._galleryShow(current-1)}
+ });
+ // Animated museum statistics.
+ root.querySelectorAll('.stat b').forEach(el=>{const target=parseInt(el.textContent,10);if(!Number.isFinite(target))return;el.dataset.target=target;el.textContent='0';const animate=()=>{let n=0;const step=Math.max(1,Math.ceil(target/18));const tick=()=>{n=Math.min(target,n+step);el.textContent=n;if(n<target)requestAnimationFrame(tick)};tick()};if('IntersectionObserver' in window && !reduceMotion){const obs=new IntersectionObserver(es=>es.forEach(en=>{if(en.isIntersecting){animate();obs.disconnect()}}),{threshold:.6});obs.observe(el)}else{el.textContent=target}});
+ // Click feedback for buttons.
+ root.querySelectorAll('.btn').forEach(btn=>btn.addEventListener('click',e=>{if(reduceMotion)return;const r=btn.getBoundingClientRect(),s=Math.max(r.width,r.height)*.18,sp=document.createElement('span');sp.className='ripple';sp.style.width=s+'px';sp.style.height=s+'px';sp.style.left=(e.clientX-r.left-s/2)+'px';sp.style.top=(e.clientY-r.top-s/2)+'px';btn.style.position='relative';btn.style.overflow='hidden';btn.appendChild(sp);setTimeout(()=>sp.remove(),600)}));
+
+})();
+</script>
+</body>
+</html>
